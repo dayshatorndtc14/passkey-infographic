@@ -491,6 +491,140 @@
       color: #ffffff;
     }
 
+    /* ═══════════════════════════════
+       QUOTE BOX
+    ═══════════════════════════════ */
+    .quote-box {
+      background: rgba(0, 212, 255, 0.08);
+      border: 1px solid rgba(0, 212, 255, 0.3);
+      border-radius: var(--radius);
+      padding: 12px 18px;
+    }
+    .quote-text {
+      font-size: 0.95rem;
+      color: var(--white);
+      line-height: 1.5;
+      font-weight: 700;
+    }
+
+    /* ═══════════════════════════════
+       SECURITY PIPELINE GRAPHIC (SLIDE 8)
+    ═══════════════════════════════ */
+    .sec-pipeline {
+      display: flex;
+      align-items: stretch;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 14px;
+      position: relative;
+    }
+    @media (max-width: 800px) {
+      .sec-pipeline {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+      }
+    }
+    .pipeline-node {
+      flex: 1;
+      background: var(--bg-card);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .pipeline-node:hover {
+      transform: translateY(-3px);
+    }
+    .node-client {
+      border-color: rgba(0, 255, 136, 0.45);
+      background: linear-gradient(180deg, rgba(0, 255, 136, 0.12) 0%, rgba(13, 27, 62, 0.85) 100%);
+    }
+    .node-middle {
+      border-color: rgba(0, 212, 255, 0.55);
+      background: linear-gradient(180deg, rgba(0, 212, 255, 0.15) 0%, rgba(13, 27, 62, 0.85) 100%);
+    }
+    .node-server {
+      border-color: rgba(168, 85, 247, 0.5);
+      background: linear-gradient(180deg, rgba(168, 85, 247, 0.15) 0%, rgba(13, 27, 62, 0.85) 100%);
+    }
+
+    .node-badge {
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 6px;
+    }
+    .node-client .node-badge { background: rgba(0, 255, 136, 0.2); color: var(--green); border: 1px solid rgba(0, 255, 136, 0.4); }
+    .node-middle .node-badge { background: rgba(0, 212, 255, 0.2); color: var(--cyan); border: 1px solid rgba(0, 212, 255, 0.4); }
+    .node-server .node-badge { background: rgba(168, 85, 247, 0.2); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.4); }
+
+    .node-icon {
+      font-size: 1.8rem;
+      margin-bottom: 6px;
+      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
+    }
+    .node-title {
+      font-size: 0.98rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+    .node-desc {
+      font-size: 0.78rem;
+      color: #cfd8e6;
+      line-height: 1.45;
+      margin-bottom: 10px;
+      flex: 1;
+    }
+    .node-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 8px;
+      width: 100%;
+      box-sizing: border-box;
+      white-space: nowrap;
+    }
+    .tag-secure { background: rgba(0, 255, 136, 0.15); color: #00ff88; border: 1px solid rgba(0, 255, 136, 0.3); }
+    .tag-block  { background: rgba(0, 212, 255, 0.15); color: #00d4ff; border: 1px solid rgba(0, 212, 255, 0.3); }
+    .tag-server { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
+
+    .pipeline-arrow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0 2px;
+      min-width: 55px;
+    }
+    @media (max-width: 800px) {
+      .pipeline-arrow {
+        transform: rotate(90deg);
+        margin: 2px 0;
+      }
+    }
+    .arrow-label {
+      font-size: 0.62rem;
+      font-weight: 700;
+      color: var(--cyan);
+      white-space: nowrap;
+      margin-bottom: 2px;
+    }
+    .arrow-icon {
+      font-size: 1.3rem;
+      color: var(--cyan);
+      animation: pulse 1.5s infinite;
+    }
+
     .punchline {
       display: inline-block;
       margin-top: 22px;
@@ -880,36 +1014,73 @@
     </div>
   </div>
 
-  <!-- SLIDE 8 — SUMMARY -->
+  <!-- SLIDE 8 — SUMMARY & SECURITY ARCHITECTURE -->
   <div class="slide s8">
     <div class="slide-inner">
-      <div class="label">Summary</div>
-      <h2>Passkey คือมาตรฐานใหม่<br/>ที่ <span class="cyan">พร้อมใช้งานแล้ววันนี้</span></h2>
-      <p class="sub">สรุป 3 ตัวเลือกตามลักษณะการใช้งาน</p>
+      <div class="label">Summary & Security Architecture</div>
+      <h2>Passkey มาตรฐานความปลอดภัยใหม่<br/>ที่ <span class="cyan">ปิดตายทุกช่องโหว่เดิม</span></h2>
+      <p class="sub">สถาปัตยกรรมความปลอดภัย 3 ระดับ (Zero Shared Secrets & Phishing-Proof)</p>
       
-      <div class="grid-3" style="margin-top: 14px; text-align: left;">
-        <div class="tool-card" style="padding: 14px 16px;">
-          <h3 style="font-size: 1rem; color: var(--cyan); display: flex; align-items: center; gap: 8px;">
-            <img src="assets/windows_hello.jpg" alt="Windows Hello" style="width:20px;height:20px;border-radius:4px;background:#fff;padding:1px;object-fit:contain;"/> Windows Hello
-          </h3>
-          <p style="font-size: 0.82rem; margin-top: 6px;">สะดวก รวดเร็ว ผูกกับชิป <strong>TPM (Trusted Platform Module)</strong> ในเครื่อง เหมาะกับการใช้งานประจำวัน</p>
+      <!-- 3-PILLAR SECURITY GRAPHIC -->
+      <div class="sec-pipeline">
+        <!-- 1. ต้นทาง -->
+        <div class="pipeline-node node-client">
+          <div class="node-badge">1. ต้นทาง (Client)</div>
+          <div class="node-icon">💻🔐</div>
+          <div class="node-title">ไม่มีรหัสผ่านให้หลุด</div>
+          <p class="node-desc">เก็บ <strong>Private Key</strong> เฉพาะในเครื่อง ไม่เคยส่งออกทางเน็ต และไม่มีรหัสผ่านให้เผลอกรอก</p>
+          <div class="node-tag tag-secure">🛡️ Key ไม่เคยออกจากเครื่อง</div>
         </div>
-        <div class="tool-card" style="padding: 14px 16px;">
-          <h3 style="font-size: 1rem; color: var(--green); display: flex; align-items: center; gap: 8px;">
-            <img src="assets/bitwarden.png" alt="Bitwarden" style="width:20px;height:20px;border-radius:4px;background:#fff;padding:1px;object-fit:contain;"/> Bitwarden
-          </h3>
-          <p style="font-size: 0.82rem; margin-top: 6px;">คล่องตัว ซิงค์ข้ามทุก <strong>OS (Operating System)</strong> แบบ <strong>E2EE (End-to-End Encryption)</strong></p>
+
+        <!-- Connector 1 -> 2 -->
+        <div class="pipeline-arrow">
+          <span class="arrow-label">ตรวจ Domain</span>
+          <span class="arrow-icon">➔</span>
         </div>
-        <div class="tool-card" style="padding: 14px 16px;">
-          <h3 style="font-size: 1rem; color: var(--yellow); display: flex; align-items: center; gap: 8px;">
-            <img src="assets/keepassxc.jpg" alt="KeePassXC" style="width:20px;height:20px;border-radius:4px;background:#fff;padding:1px;object-fit:contain;"/> KeePassXC
-          </h3>
-          <p style="font-size: 0.82rem; margin-top: 6px;">ออฟไลน์ 100% ไม่พึ่งพา Cloud เหมาะกับเซิร์ฟเวอร์และข้อมูลลับสูง</p>
+
+        <!-- 2. ตรงกลาง -->
+        <div class="pipeline-node node-middle">
+          <div class="node-badge">2. ตรงกลาง (Browser)</div>
+          <div class="node-icon">🌐🛡️</div>
+          <div class="node-title">ล็อกส่งเฉพาะเว็บจริง</div>
+          <p class="node-desc">ระบบตรวจ <strong>Origin Binding</strong> อัตโนมัติ หากเจอเว็บปลอม/Phishing จะตัดการเชื่อมต่อทันที</p>
+          <div class="node-tag tag-block">🚫 เว็บปลอมหลอกไม่ได้ 100%</div>
+        </div>
+
+        <!-- Connector 2 -> 3 -->
+        <div class="pipeline-arrow">
+          <span class="arrow-label">ส่งแค่ Signature</span>
+          <span class="arrow-icon">➔</span>
+        </div>
+
+        <!-- 3. ปลายทาง -->
+        <div class="pipeline-node node-server">
+          <div class="node-badge">3. ปลายทาง (Server)</div>
+          <div class="node-icon">☁️🔒</div>
+          <div class="node-title">ไม่มีรหัสผ่านให้แฮก</div>
+          <p class="node-desc">เก็บบนคลาวด์แค่ <strong>Public Key</strong> ต่อให้ฐานข้อมูลถูกเจาะ แฮกเกอร์ก็ไม่มีรหัสผ่านให้ขโมย</p>
+          <div class="node-tag tag-server">✅ ไร้ Shared Secret</div>
         </div>
       </div>
 
-      <div class="quote-box" style="margin-top: 16px; text-align: center;">
-        <div class="quote-text" style="font-size: 0.95rem;">"ระบบหลักๆ รองรับครบแล้ว — มีเครื่องมือพร้อมให้เลือกตามความเหมาะสมของงาน"</div>
+      <!-- Highlighted Quote Box -->
+      <div class="quote-box" style="margin-top: 14px; text-align: center; border-color: rgba(0, 212, 255, 0.45); background: linear-gradient(90deg, rgba(0,255,136,0.08) 0%, rgba(0,212,255,0.12) 50%, rgba(168,85,247,0.08) 100%); padding: 12px 16px;">
+        <div class="quote-text" style="font-size: 1.02rem; font-weight: 800; color: #ffffff; line-height: 1.5;">
+          "ต้นทางไม่มีรหัสผ่านให้หลุด <span class="cyan">—</span> ตรงกลางล็อกส่งเฉพาะเว็บจริง <span class="cyan">—</span> ปลายทางไม่มีรหัสผ่านให้แฮก"
+        </div>
+      </div>
+
+      <!-- Supported Tools Compact Bar -->
+      <div style="display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 12px; flex-wrap: wrap;">
+        <div style="display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.05); border: 1px solid rgba(0,212,255,0.3); padding: 4px 12px; border-radius: 100px; font-size: 0.74rem; font-weight: 700; color: #e2e8f0;">
+          <img src="assets/windows_hello.jpg" alt="Windows Hello" style="width:16px;height:16px;border-radius:3px;background:#fff;padding:1px;object-fit:contain;"/> Windows Hello (TPM 2.0)
+        </div>
+        <div style="display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.05); border: 1px solid rgba(59,130,246,0.4); padding: 4px 12px; border-radius: 100px; font-size: 0.74rem; font-weight: 700; color: #e2e8f0;">
+          <img src="assets/bitwarden.png" alt="Bitwarden" style="width:16px;height:16px;border-radius:3px;background:#fff;padding:1px;object-fit:contain;"/> Bitwarden (Cloud E2EE)
+        </div>
+        <div style="display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.05); border: 1px solid rgba(0,255,136,0.3); padding: 4px 12px; border-radius: 100px; font-size: 0.74rem; font-weight: 700; color: #e2e8f0;">
+          <img src="assets/keepassxc.jpg" alt="KeePassXC" style="width:16px;height:16px;border-radius:3px;background:#fff;padding:1px;object-fit:contain;"/> KeePassXC (Offline 100%)
+        </div>
       </div>
     </div>
   </div>
