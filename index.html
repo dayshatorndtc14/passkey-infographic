@@ -985,26 +985,62 @@
   <!-- SLIDE 6 — 3 BEST PRACTICES -->
   <div class="slide s6">
     <div class="slide-inner">
-      <div class="label">Best Practices</div>
+      <div class="label">Best Practices &amp; Safety Net</div>
       <h2>3 ข้อควรจำ <span class="cyan">ก่อนเริ่มใช้ Passkey</span></h2>
-      <p class="sub">ใช้อย่างปลอดภัยและไม่มีวันติดล็อก</p>
+      <p class="sub">Passkey ปลอดภัย 100% แต่ต้องเตรียม "แผนสำรอง" ป้องกันการติดล็อกเมื่ออุปกรณ์ชำรุดหรือสูญหาย</p>
 
-      <div class="fail-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px; text-align: left;">
-        <div class="tool-card">
-          <div class="tool-icon">📱</div>
-          <h3>1. ผูกอุปกรณ์สำรอง</h3>
-          <p>ผูก Passkey ไว้กับมือถือหรือ Password Manager เผื่อคอมพิวเตอร์เสีย</p>
+      <div class="grid-3" style="margin-top: 12px;">
+        <!-- Card 1 -->
+        <div class="tool-card" style="text-align: left; padding: clamp(12px, 1.6vh, 16px) clamp(10px, 1.2vw, 14px);">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <div class="tool-icon" style="margin: 0; font-size: 1.6rem;">📱</div>
+              <span class="tool-tag tag-blue" style="margin: 0;">🔑 ปั๊มกุญแจสำรอง</span>
+            </div>
+            <h3 style="color: var(--cyan); margin-bottom: 6px;">1. ผูกอุปกรณ์สำรอง</h3>
+            <p style="font-size: 0.78rem; line-height: 1.45; color: #cfd8e6;">
+              <strong style="color: var(--white);">• ปัญหา:</strong> คอมฯ ตกน้ำ เมนบอร์ดพัง ชิป TPM เสีย กุญแจในเครื่องจะหายทันที<br/>
+              <strong style="color: var(--cyan);">• วิธีแก้:</strong> ผูก Passkey ไว้ที่คอมฯ (ดอกที่ 1) + มือถือหรือ Bitwarden (ดอกที่ 2)<br/>
+              <strong style="color: var(--green);">• ผลลัพธ์:</strong> คอมพัง ยังใช้มือถือสแกน QR Code เข้าบัญชีได้ทันที
+            </p>
+          </div>
         </div>
-        <div class="tool-card">
-          <div class="tool-icon">💾</div>
-          <h3>2. สำรองไฟล์ Database</h3>
-          <p>ถ้าใช้ KeePassXC อย่าลืม Backup ไฟล์ .kdbx เก็บไว้ที่ปลอดภัยเป็นประจำ</p>
+
+        <!-- Card 2 -->
+        <div class="tool-card highlight" style="text-align: left; padding: clamp(12px, 1.6vh, 16px) clamp(10px, 1.2vw, 14px);">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <div class="tool-icon" style="margin: 0; font-size: 1.6rem;">💾</div>
+              <span class="tool-tag tag-yellow" style="margin: 0;">📄 สำเนาไฟล์ตู้เซฟ</span>
+            </div>
+            <h3 style="color: var(--yellow); margin-bottom: 6px;">2. สำรองไฟล์ Database</h3>
+            <p style="font-size: 0.78rem; line-height: 1.45; color: #cfd8e6;">
+              <strong style="color: var(--white);">• ปัญหา:</strong> KeePassXC ออฟไลน์ 100% ไม่มี Cloud คอย Backup ให้อัตโนมัติ<br/>
+              <strong style="color: var(--yellow);">• วิธีแก้:</strong> ก๊อปปี้ไฟล์ <code>.kdbx</code> เก็บใน Flash Drive หรือ External Drive สำรอง<br/>
+              <strong style="color: var(--green);">• ผลลัพธ์:</strong> ฮาร์ดดิสก์พัง แค่เอาไฟล์สำรองมาเปิดบนเครื่องใหม่ก็จบ
+            </p>
+          </div>
         </div>
-        <div class="tool-card">
-          <div class="tool-icon">🔐</div>
-          <h3>3. เปิด 2FA กู้คืนบัญชี</h3>
-          <p>เปิด <strong>2FA (Two-Factor Authentication: ยืนยันตัวตน 2 ชั้น)</strong> และบันทึก <strong>Recovery Codes (รหัสกู้คืนฉุกเฉิน)</strong> ไว้เสมอ</p>
+
+        <!-- Card 3 -->
+        <div class="tool-card" style="text-align: left; padding: clamp(12px, 1.6vh, 16px) clamp(10px, 1.2vw, 14px);">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <div class="tool-icon" style="margin: 0; font-size: 1.6rem;">🔐</div>
+              <span class="tool-tag tag-green" style="margin: 0;">🚪 กุญแจฉุกเฉิน</span>
+            </div>
+            <h3 style="color: var(--green); margin-bottom: 6px;">3. เก็บ Recovery Codes</h3>
+            <p style="font-size: 0.78rem; line-height: 1.45; color: #cfd8e6;">
+              <strong style="color: var(--white);">• ปัญหา:</strong> เผื่อเกิดเหตุสุดวิสัย โน้ตบุ๊กพังพร้อมกับทำมือถือหายพร้อมกัน<br/>
+              <strong style="color: var(--green);">• วิธีแก้:</strong> เปิด <strong>2FA</strong> สำรอง และจดบันทึก <strong>Recovery Codes (8-10 หลัก)</strong> ไว้ในที่ปลอดภัย<br/>
+              <strong style="color: var(--cyan);">• ผลลัพธ์:</strong> มี "ไพ่ใบสุดท้าย" ปลดล็อกกู้บัญชีคืนได้ 100% ไม่ติดล็อกถาวร
+            </p>
+          </div>
         </div>
+      </div>
+
+      <div class="slide-note">
+        <span class="note-title">💡 หัวใจสำคัญ:</span> <strong>Passkey</strong> ปลอดภัยจากแฮกเกอร์ 100% แต่เราต้องเตรียม <strong>"ทางเข้าสำรอง"</strong> เผื่อเราทำอุปกรณ์ตัวเองพังหรือสูญหาย
       </div>
     </div>
   </div>
