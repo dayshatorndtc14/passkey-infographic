@@ -467,19 +467,28 @@
     /* ═══════════════════════════════
        QUOTE & PUNCHLINE
     ═══════════════════════════════ */
-    .quote-box {
-      border-left: 4px solid var(--cyan);
-      background: rgba(0, 212, 255, 0.07);
-      border-radius: 0 14px 14px 0;
-      padding: 14px 18px;
-      margin-top: 16px;
+    /* Slide Footnote / Note Box */
+    .slide-note {
+      margin-top: 14px;
+      padding: 6px 14px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(0, 212, 255, 0.22);
+      border-radius: 10px;
+      font-size: 0.72rem;
+      color: #9aa5b8;
       text-align: left;
+      line-height: 1.45;
+      display: inline-block;
+      width: 100%;
+      box-sizing: border-box;
     }
-    .quote-text {
-      font-size: 1.05rem; font-weight: 700; line-height: 1.5; color: var(--white);
+    .slide-note .note-title {
+      color: var(--cyan);
+      font-weight: 800;
+      margin-right: 4px;
     }
-    .quote-auth {
-      color: var(--cyan); font-size: 0.8rem; margin-top: 6px; font-weight: 600;
+    .slide-note strong {
+      color: #ffffff;
     }
 
     .punchline {
@@ -641,7 +650,11 @@
         </div>
       </div>
 
-      <p style="margin-top: 24px; font-size: 0.85rem; color: var(--gray);">👉 กดปุ่ม "ถัดไป" หรือลูกศรขวาเพื่อเริ่ม</p>
+      <div class="slide-note" style="margin-top: 20px;">
+        <span class="note-title">💡 หมายเหตุ:</span> <strong>FIDO2 (Fast Identity Online 2)</strong> = มาตรฐานระดับโลกเพื่อการยืนยันตัวตนไร้รหัสผ่าน พัฒนาโดยกลุ่มพันธมิตร FIDO Alliance (Google, Apple, Microsoft)
+      </div>
+
+      <p style="margin-top: 18px; font-size: 0.85rem; color: var(--gray);">👉 กดปุ่ม "ถัดไป" หรือลูกศรขวาเพื่อเริ่ม</p>
     </div>
   </div>
 
@@ -667,6 +680,10 @@
 
       <div class="quote-box" style="margin-top: 14px;">
         <div class="quote-text">🛡️ ป้องกัน Phishing 100% — ถ้าเป็นเว็บปลอม เบราว์เซอร์จะไม่ยอมส่งกุญแจให้</div>
+      </div>
+
+      <div class="slide-note">
+        <span class="note-title">💡 หมายเหตุ:</span> <strong>TPM (Trusted Platform Module)</strong> = ชิปฮาร์ดแวร์ความปลอดภัยบนเมนบอร์ด ใช้สร้างและเก็บกุญแจลับเฉพาะเครื่อง ป้องกันการขโมยข้อมูลระดับฮาร์ดแวร์
       </div>
     </div>
   </div>
@@ -714,6 +731,10 @@
           </div>
           <div style="font-size: 0.75rem; color: var(--yellow); margin-top: 10px; font-weight: 700;">★ ปลอดภัย &amp; ไพรเวตสูงสุด</div>
         </div>
+      </div>
+
+      <div class="slide-note">
+        <span class="note-title">💡 หมายเหตุ:</span> <strong>PIN</strong> = รหัสตัวเลขส่วนบุคคลสำหรับปลดล็อกเฉพาะเครื่อง (ไม่ส่งออกเน็ต) | <strong>E2EE (End-to-End Encryption)</strong> = การเข้ารหัสลับต้นทางถึงปลายทาง ผู้ให้บริการคลาวด์ไม่สามารถอ่านข้อมูลได้
       </div>
     </div>
   </div>
@@ -796,6 +817,10 @@
           <h3>ใช้ KeePassXC เมื่อ...</h3>
           <p>• งานเซิร์ฟเวอร์ / เครื่องที่ห้ามต่อเน็ต (<strong>Air-Gapped Environment</strong>)<br/>• องค์กรมีนโยบายห้ามฝากข้อมูลบน Cloud<br/>• ต้องการถือ Master Key ไว้เอง 100%</p>
         </div>
+      </div>
+
+      <div class="slide-note">
+        <span class="note-title">💡 หมายเหตุ:</span> <strong>Air-Gapped</strong> = คอมพิวเตอร์หรือเซิร์ฟเวอร์ที่ตัดขาดจากการเชื่อมต่ออินเทอร์เน็ตและเครือข่ายภายนอก 100% เพื่อความปลอดภัยของข้อมูลลับสูงสุด
       </div>
     </div>
   </div>
