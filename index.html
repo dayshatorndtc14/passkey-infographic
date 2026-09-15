@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="th">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-  <title>Data > AI — บทเรียนจาก Palantir</title>
+  <title>IT Morning Brief — ยุคแห่ง Passkey</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700;800;900&family=Inter:wght@400;700;900&display=swap');
 
@@ -12,6 +12,7 @@
       --bg-card: rgba(255, 255, 255, 0.05);
       --cyan:    #00d4ff;
       --green:   #00ff88;
+      --yellow:  #ffd32a;
       --red:     #ff4757;
       --white:   #ffffff;
       --gray:    #9aa5b8;
@@ -42,7 +43,6 @@
 
     html {
       height: 100%;
-      /* Base font size scales dynamically with --scale */
       font-size: calc(16px * var(--scale));
     }
 
@@ -158,11 +158,11 @@
       content: ''; position: absolute; inset: 0; pointer-events: none;
     }
     .s1::before { background: radial-gradient(ellipse 80% 50% at 50% 0%,   rgba(0,212,255,.15), transparent 70%); }
-    .s2::before { background: radial-gradient(ellipse 60% 50% at 30% 50%,  rgba(0,212,255,.12), transparent 70%); }
-    .s3::before { background: radial-gradient(ellipse 70% 50% at 70% 50%,  rgba(255,71,87,.12), transparent 70%); }
-    .s4::before { background: radial-gradient(ellipse 60% 50% at 50% 50%,  rgba(0,212,255,.10), transparent 70%); }
+    .s2::before { background: radial-gradient(ellipse 60% 50% at 30% 50%,  rgba(0,255,136,.12), transparent 70%); }
+    .s3::before { background: radial-gradient(ellipse 70% 50% at 50% 50%,  rgba(0,212,255,.14), transparent 70%); }
+    .s4::before { background: radial-gradient(ellipse 60% 50% at 50% 50%,  rgba(255,211,42,.10), transparent 70%); }
     .s5::before { background: radial-gradient(ellipse 70% 50% at 20% 50%,  rgba(0,212,255,.13), transparent 70%); }
-    .s6::before { background: radial-gradient(ellipse 60% 50% at 80% 50%,  rgba(0,255,136,.12), transparent 70%); }
+    .s6::before { background: radial-gradient(ellipse 60% 50% at 80% 50%,  rgba(0,255,136,.14), transparent 70%); }
     .s7::before { background: radial-gradient(ellipse 60% 50% at 50% 30%,  rgba(0,212,255,.12), transparent 70%); }
     .s8::before { background: radial-gradient(ellipse 70% 60% at 50% 100%, rgba(0,212,255,.18), transparent 70%); }
 
@@ -185,7 +185,7 @@
     .slide-inner::-webkit-scrollbar { display: none; }
 
     /* ═══════════════════════════════
-       TYPOGRAPHY (Scales with rem)
+       TYPOGRAPHY
     ═══════════════════════════════ */
     .badge {
       display: inline-flex; align-items: center; gap: 8px;
@@ -207,13 +207,13 @@
     }
 
     h1 {
-      font-size: 2.2rem;
+      font-size: 2.1rem;
       font-weight: 900;
-      line-height: 1.18;
+      line-height: 1.2;
       letter-spacing: -0.5px;
     }
     h2 {
-      font-size: 1.65rem;
+      font-size: 1.6rem;
       font-weight: 800;
       line-height: 1.25;
       letter-spacing: -0.3px;
@@ -224,101 +224,88 @@
       line-height: 1.3;
     }
 
-    .cyan  { color: var(--cyan); }
-    .green { color: var(--green); }
-    .red   { color: var(--red); }
-    .gray  { color: var(--gray); }
+    .cyan   { color: var(--cyan); }
+    .green  { color: var(--green); }
+    .yellow { color: var(--yellow); }
+    .red    { color: var(--red); }
+    .gray   { color: var(--gray); }
     
     .sub {
       color: var(--gray);
-      font-size: 1rem;
+      font-size: 0.95rem;
       line-height: 1.6;
       margin-top: 10px;
     }
 
     /* ═══════════════════════════════
-       FORMULA BOX
+       CARDS & GRIDS
     ═══════════════════════════════ */
-    .formula-box {
-      background: rgba(0, 212, 255, 0.08);
-      border: 2px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px;
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
       margin-top: 16px;
+      text-align: left;
     }
-    .formula-big {
-      font-size: 2.5rem;
-      font-weight: 900;
-      line-height: 1.1;
-    }
-    .bar-row {
-      display: flex; gap: 14px; margin-top: 16px;
-    }
-    .bar {
-      border-radius: 12px; padding: 14px 10px; text-align: center;
-    }
-    .bar.data {
-      background: rgba(0, 212, 255, 0.16);
-      border: 2px solid rgba(0, 212, 255, 0.45);
-      flex: 4;
-    }
-    .bar.ai {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      flex: 1;
-    }
-    .bar-num {
-      font-size: 2rem; font-weight: 900; line-height: 1;
-    }
-    .bar.data .bar-num { color: var(--cyan); }
-    .bar.ai   .bar-num { color: var(--gray); }
-    .bar-lbl {
-      font-size: 0.8rem; color: var(--white); margin-top: 6px; font-weight: 600;
-    }
+    @media (max-width: 650px) { .grid-3 { grid-template-columns: 1fr; } }
 
-    /* ═══════════════════════════════
-       FAIL CARDS
-    ═══════════════════════════════ */
-    .fail-grid {
+    .tool-card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+    .tool-card.highlight {
+      border-color: rgba(0, 212, 255, 0.6);
+      background: rgba(0, 212, 255, 0.08);
+    }
+    .tool-icon { font-size: 2rem; margin-bottom: 8px; }
+    .tool-tag {
+      display: inline-block;
+      border-radius: 6px;
+      padding: 2px 8px;
+      font-size: 0.68rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      width: fit-content;
+    }
+    .tag-blue { background: rgba(0, 212, 255, 0.2); color: var(--cyan); }
+    .tag-green { background: rgba(0, 255, 136, 0.2); color: var(--green); }
+    .tag-yellow { background: rgba(255, 211, 42, 0.2); color: var(--yellow); }
+
+    .tool-card h3 { font-size: 1.15rem; margin-bottom: 4px; color: var(--white); }
+    .tool-card p { font-size: 0.85rem; color: #cfd8e6; line-height: 1.5; }
+
+    /* Concept 2-Box */
+    .key-box-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 16px;
       margin-top: 16px;
       text-align: left;
     }
-    @media (max-width: 600px) { .fail-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 600px) { .key-box-grid { grid-template-columns: 1fr; } }
 
-    .fail-card {
-      background: rgba(255, 71, 87, 0.08);
-      border: 1.5px solid rgba(255, 71, 87, 0.35);
+    .key-box {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border);
       border-radius: var(--radius);
       padding: 18px 20px;
-      position: relative;
-      overflow: hidden;
     }
-    .fail-card::before {
-      content: '✕'; position: absolute; top: -10px; right: 10px;
-      font-size: 4rem; font-weight: 900; color: rgba(255, 71, 87, 0.09);
-      line-height: 1;
+    .key-box.private {
+      border-color: rgba(0, 255, 136, 0.4);
+      background: rgba(0, 255, 136, 0.06);
     }
-    .fail-tag {
-      display: inline-block;
-      background: rgba(255, 71, 87, 0.2);
-      color: var(--red);
-      border-radius: 6px;
-      padding: 3px 10px;
-      font-size: 0.68rem;
-      font-weight: 800;
-      margin-bottom: 8px;
+    .key-box.public {
+      border-color: rgba(0, 212, 255, 0.4);
+      background: rgba(0, 212, 255, 0.06);
     }
-    .fail-card h3 { font-size: 1.15rem; margin-bottom: 6px; }
-    .fail-card p  { font-size: 0.88rem; color: #d0d7e5; line-height: 1.55; }
-    .fail-amt {
-      margin-top: 10px; font-size: 1.5rem; font-weight: 900; color: var(--red);
-    }
-    .fail-amt span {
-      font-size: 0.72rem; font-weight: 400; color: var(--gray); display: block;
-    }
+    .key-box h3 { font-size: 1.15rem; margin-bottom: 6px; }
+    .key-box p { font-size: 0.88rem; color: #d0d7e5; line-height: 1.55; }
 
     /* ═══════════════════════════════
        TABLE
@@ -333,8 +320,8 @@
     table { width: 100%; border-collapse: collapse; }
     th {
       background: rgba(0, 212, 255, 0.12);
-      padding: 12px 16px;
-      font-size: 0.8rem;
+      padding: 12px 14px;
+      font-size: 0.78rem;
       letter-spacing: 1px;
       text-transform: uppercase;
       color: var(--cyan);
@@ -342,42 +329,15 @@
       font-weight: 800;
     }
     td {
-      padding: 12px 16px;
-      font-size: 0.92rem;
+      padding: 10px 14px;
+      font-size: 0.88rem;
       border-top: 1px solid rgba(255, 255, 255, 0.06);
       color: #cfd8e6;
-      vertical-align: top;
+      vertical-align: middle;
     }
     td:first-child { color: var(--white); font-weight: 700; white-space: nowrap; }
-    tr.pl-row td { background: rgba(0, 212, 255, 0.07); }
     .tag-good { color: var(--green); font-weight: 800; }
-    .tag-bad  { color: var(--red);   font-weight: 700; }
-
-    /* ═══════════════════════════════
-       TIMELINE
-    ═══════════════════════════════ */
-    .timeline {
-      text-align: left;
-      margin-top: 16px;
-      padding-left: 28px;
-      position: relative;
-    }
-    .timeline::before {
-      content: ''; position: absolute; left: 6px; top: 8px; bottom: 8px;
-      width: 3px;
-      background: linear-gradient(to bottom, var(--cyan), rgba(0,212,255,0.1));
-    }
-    .tl-item { position: relative; margin-bottom: 18px; }
-    .tl-item::before {
-      content: ''; position: absolute; left: -26px; top: 6px;
-      width: 12px; height: 12px;
-      background: var(--cyan);
-      border-radius: 50%;
-      box-shadow: 0 0 10px var(--cyan);
-    }
-    .tl-year  { font-size: 0.75rem; color: var(--cyan); font-weight: 800; letter-spacing: 2px; }
-    .tl-title { font-size: 1.05rem; font-weight: 700; margin: 2px 0; }
-    .tl-desc  { font-size: 0.88rem; color: #cfd8e6; line-height: 1.5; }
+    .tag-warn { color: var(--yellow); font-weight: 700; }
 
     /* ═══════════════════════════════
        STATS
@@ -398,36 +358,14 @@
       text-align: center;
     }
     .stat-num {
-      font-size: 2.2rem; font-weight: 900; color: var(--cyan); line-height: 1;
+      font-size: 2.1rem; font-weight: 900; color: var(--cyan); line-height: 1;
     }
     .stat-lbl {
       font-size: 0.8rem; color: #d0d7e5; margin-top: 8px; line-height: 1.4; font-weight: 600;
     }
 
     /* ═══════════════════════════════
-       CLIENTS
-    ═══════════════════════════════ */
-    .client-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-top: 16px;
-    }
-    @media (min-width: 600px) { .client-grid { grid-template-columns: repeat(6, 1fr); } }
-
-    .client-card {
-      background: var(--bg-card);
-      border: 1.5px solid var(--border);
-      border-radius: 14px;
-      padding: 14px 6px;
-      text-align: center;
-    }
-    .client-card .em { font-size: 1.8rem; }
-    .client-card .nm { font-size: 0.8rem; font-weight: 800; margin-top: 6px; }
-    .client-card .rl { font-size: 0.68rem; color: var(--gray); margin-top: 2px; }
-
-    /* ═══════════════════════════════
-       QUOTE BOX
+       QUOTE & PUNCHLINE
     ═══════════════════════════════ */
     .quote-box {
       border-left: 4px solid var(--cyan);
@@ -444,13 +382,10 @@
       color: var(--cyan); font-size: 0.8rem; margin-top: 6px; font-weight: 600;
     }
 
-    /* ═══════════════════════════════
-       PUNCHLINE
-    ═══════════════════════════════ */
     .punchline {
       display: inline-block;
       margin-top: 22px;
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: 800;
       color: var(--cyan);
       padding: 14px 32px;
@@ -527,9 +462,7 @@
       width: 26px; border-radius: 5px;
     }
 
-    /* ═══════════════════════════════
-       ANIMATIONS
-    ═══════════════════════════════ */
+    /* Animations */
     .slide.active .slide-inner > * {
       animation: slideUp 0.45s ease both;
     }
@@ -557,17 +490,15 @@
 
 <!-- ══════════ TOP BAR ══════════ -->
 <div class="top-bar">
-  <div class="app-title">IT Morning Brief <span>•</span> Palantir</div>
+  <div class="app-title">IT Morning Brief <span>•</span> Passkeys</div>
   
   <div class="top-actions">
-    <!-- Quick Zoom Controller for Projector -->
     <div class="zoom-pill" title="ปรับขนาดตัวอักษรสำหรับ Projector">
       <button class="zoom-btn" onclick="adjustScale(-0.25)">A−</button>
       <span class="zoom-val" id="scaleDisplay">175%</span>
       <button class="zoom-btn" onclick="adjustScale(0.25)">A+</button>
     </div>
 
-    <!-- Fullscreen Toggle -->
     <button class="fs-btn" onclick="toggleFullscreen()" title="โหมดนำเสนอเต็มจอ (Fullscreen)">
       ⛶ เต็มจอ
     </button>
@@ -582,138 +513,213 @@
   <!-- SLIDE 1 — HERO -->
   <div class="slide s1 active">
     <div class="slide-inner">
-      <div class="badge"><span class="badge-dot"></span> Palantir Story</div>
-      <h1>AI เก่งแค่ไหน<br/>ก็แพ้ <span class="cyan">Data ที่ดีกว่า</span></h1>
-      <p class="sub">ทำไม Palantir ถึงชนะเกม AI<br/>โดยที่ไม่ได้สร้าง AI เก่งที่สุด</p>
+      <div class="badge"><span class="badge-dot"></span> Next-Gen Authentication</div>
+      <h1>ลาก่อน Password!<br/>เข้าสู่ยุค <span class="cyan">Passkey</span></h1>
+      <p class="sub">สแกนนิ้วเดียวจบ ปลอดภัยกว่าเดิม 100%<br/>พร้อมเทียบ 3 เครื่องมือตัวท็อป: Windows Hello vs Bitwarden vs KeePassXC</p>
       <p style="margin-top: 24px; font-size: 0.85rem; color: var(--gray);">👉 กดปุ่ม "ถัดไป" หรือลูกศรขวาเพื่อเริ่ม</p>
     </div>
   </div>
 
-  <!-- SLIDE 2 — FORMULA -->
+  <!-- SLIDE 2 — CORE CONCEPT -->
   <div class="slide s2">
     <div class="slide-inner">
-      <div class="label">The Core Concept</div>
-      <h2>สูตรที่ไม่มีใครบอกคุณ</h2>
-      <p class="sub">AI เป็นเพียง 20% ของสมการ — อีก 80% คือ Data</p>
-      <div class="formula-box">
-        <div class="formula-big"><span class="cyan">Data ดี</span> &gt; AI เก่ง</div>
-        <div style="color: var(--gray); font-size: 0.9rem; margin-top: 10px;">ของที่ทำให้ AI ได้ผลจริงในโลกความเป็นจริง</div>
-        <div class="bar-row">
-          <div class="bar data"><div class="bar-num">80%</div><div class="bar-lbl">Data — คุณภาพ สะอาด เชื่อมต่อได้</div></div>
-          <div class="bar ai"><div class="bar-num">20%</div><div class="bar-lbl">AI Model</div></div>
+      <div class="label">How it works</div>
+      <h2>หลักการ <span class="green">"กุญแจ 2 ดอก"</span></h2>
+      <p class="sub">ตัดระบบกรอกรหัสผ่านทิ้ง ใช้ Cryptography แทนที่ทั้งหมด</p>
+      
+      <div class="key-box-grid">
+        <div class="key-box private">
+          <div class="label green">🗝️ กุญแจส่วนตัว (Private Key)</div>
+          <h3>ฝังอยู่ในชิปเครื่องเรา</h3>
+          <p>เก็บใน TPM เมนบอร์ด หรือ Password Manager ปลดล็อกด้วยสแกนนิ้ว/ใบหน้า <strong>ไม่เคยส่งออกไปไหนเด็ดขาด</strong></p>
         </div>
+        <div class="key-box public">
+          <div class="label cyan">🔓 กุญแจสาธารณะ (Public Key)</div>
+          <h3>อยู่ที่เซิร์ฟเวอร์เว็บ</h3>
+          <p>เซิร์ฟเวอร์เก็บเฉพาะกุญแจไข <strong>ต่อให้เซิร์ฟเวอร์โดนแฮก</strong> แฮกเกอร์ก็ไม่ได้รหัสผ่านเราไป</p>
+        </div>
+      </div>
+
+      <div class="quote-box" style="margin-top: 14px;">
+        <div class="quote-text">🛡️ ป้องกัน Phishing 100% — ถ้าเป็นเว็บปลอม เบราว์เซอร์จะไม่ยอมส่งกุญแจให้</div>
       </div>
     </div>
   </div>
 
-  <!-- SLIDE 3 — FAILURES -->
+  <!-- SLIDE 3 — THE BIG 3 -->
   <div class="slide s3">
     <div class="slide-inner">
-      <div class="label">Case Studies</div>
-      <h2>AI เก่ง + <span class="red">Data ห่วย</span> = พัง</h2>
-      <p class="sub">สองเรื่องจริงจากบริษัทยักษ์ใหญ่</p>
-      <div class="fail-grid">
-        <div class="fail-card">
-          <div class="fail-tag">FAILED 2022</div>
-          <h3>IBM Watson Health</h3>
-          <p>ทุ่ม $4B พัฒนา AI รักษามะเร็ง แต่ข้อมูลโรงพยาบาล format ไม่เหมือนกัน เชื่อมกันไม่ได้ หมอบอก "อันตราย"</p>
-          <div class="fail-amt">$4,000M <span>เงินที่หายไป</span></div>
+      <div class="label">The Top 3 Tools</div>
+      <h2>3 สไตล์ 3 ปรัชญาการเก็บ <span class="cyan">Passkey</span></h2>
+      <p class="sub">เลือกตามความต้องการและระดับความปลอดภัย</p>
+
+      <div class="grid-3">
+        <div class="tool-card">
+          <div>
+            <div class="tool-icon">🪟</div>
+            <span class="tool-tag tag-blue">OS Native / TPM 2.0</span>
+            <h3>Windows Hello</h3>
+            <p>ติดมากับ Windows 11 สแกนหน้า/นิ้ว/PIN ผูกกับฮาร์ดแวร์ ปลอดภัยระดับชิป</p>
+          </div>
+          <div style="font-size: 0.75rem; color: var(--cyan); margin-top: 10px; font-weight: 700;">★ สะดวกที่สุด ไม่ต้องลงแอป</div>
         </div>
-        <div class="fail-card">
-          <div class="fail-tag">CANCELLED 2018</div>
-          <h3>Amazon AI HR</h3>
-          <p>AI คัด Resume จาก Data เก่า 10 ปี เรียนรู้ว่า "ผู้หญิง = ไม่ผ่าน" โดยอัตโนมัติ</p>
-          <div class="fail-amt">ยกเลิก <span>หลังพบ bias</span></div>
+
+        <div class="tool-card highlight">
+          <div>
+            <div class="tool-icon">☁️</div>
+            <span class="tool-tag tag-green">Cloud Sync / Multi-Device</span>
+            <h3>Bitwarden</h3>
+            <p>Password Manager ยอดนิยม ซิงค์ Passkeys ข้ามทุกเครื่อง (PC, Mac, iPhone, Android) แบบ E2EE</p>
+          </div>
+          <div style="font-size: 0.75rem; color: var(--green); margin-top: 10px; font-weight: 700;">★ ยืดหยุ่นที่สุด คล่องตัวทุกที่</div>
         </div>
-      </div>
-      <div class="quote-box">
-        <div class="quote-text">"ทั้งสองบริษัทมี AI เก่งมาก แต่ Data ที่ให้มันเรียน... พัง"</div>
+
+        <div class="tool-card">
+          <div>
+            <div class="tool-icon">🛡️</div>
+            <span class="tool-tag tag-yellow">100% Offline / Local</span>
+            <h3>KeePassXC</h3>
+            <p>Open-Source ฐานข้อมูล .kdbx ในเครื่องตัวเอง ไม่ออกเน็ต ไม่พึ่งพาคลาวด์ใดๆ</p>
+          </div>
+          <div style="font-size: 0.75rem; color: var(--yellow); margin-top: 10px; font-weight: 700;">★ ปลอดภัย &amp; ไพรเวตสูงสุด</div>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- SLIDE 4 — COMPARE -->
+  <!-- SLIDE 4 — COMPARISON TABLE -->
   <div class="slide s4">
     <div class="slide-inner">
-      <div class="label">Comparison</div>
-      <h2>AI บริษัทต่างๆ vs <span class="cyan">Palantir</span></h2>
+      <div class="label">Deep Comparison</div>
+      <h2>เปรียบเทียบ <span class="cyan">จุดแข็ง &amp; ข้อจำกัด</span></h2>
+      
       <div class="tbl-wrap">
         <table>
-          <thead><tr><th>บริษัท</th><th>จุดแข็ง</th><th>ปัญหา</th><th>ผลลัพธ์</th></tr></thead>
+          <thead>
+            <tr>
+              <th>เกณฑ์</th>
+              <th>Windows Hello</th>
+              <th>Bitwarden</th>
+              <th>KeePassXC</th>
+            </tr>
+          </thead>
           <tbody>
-            <tr><td>OpenAI</td><td>Model เก่งที่สุด</td><td>Data ออกนอกบริษัท</td><td class="tag-bad">Enterprise ช้า</td></tr>
-            <tr><td>Google</td><td>Model ใหญ่มาก</td><td>Privacy concerns</td><td class="tag-bad">ข้อกังวล Security</td></tr>
-            <tr><td>IBM Watson</td><td>Brand น่าเชื่อ</td><td>Data ยุ่งเหยิง</td><td class="tag-bad">ปิดตัว 2022</td></tr>
-            <tr class="pl-row"><td>✦ Palantir</td><td>Data ดี 20 ปี</td><td>Model ไม่เก่งสุด</td><td class="tag-good">+340% #1 S&P</td></tr>
+            <tr>
+              <td>สถานที่เก็บ Key</td>
+              <td>ชิป TPM ในเครื่อง</td>
+              <td>Cloud (Encrypted E2EE)</td>
+              <td>ไฟล์ Local ในเครื่อง / USB</td>
+            </tr>
+            <tr>
+              <td>การซิงค์ข้ามอุปกรณ์</td>
+              <td class="tag-warn">✕ ผูกกับเครื่องนั้น</td>
+              <td class="tag-good">✓ ซิงค์ทุก OS ทันที</td>
+              <td class="tag-warn">Manual (ก๊อปไฟล์เอง)</td>
+            </tr>
+            <tr>
+              <td>การกู้คืน (Backup)</td>
+              <td>ผ่าน Microsoft Acc</td>
+              <td class="tag-good">✓ สำรองบนคลาวด์</td>
+              <td>ต้องสำรองไฟล์ .kdbx เอง</td>
+            </tr>
+            <tr>
+              <td>ความเป็นส่วนตัว</td>
+              <td>สูง (ในชิป)</td>
+              <td>สูง (Zero-Knowledge)</td>
+              <td class="tag-good">สูงสุด (Offline 100%)</td>
+            </tr>
+            <tr>
+              <td>ค่าใช้จ่าย</td>
+              <td class="tag-good">ฟรี (ในตัว OS)</td>
+              <td class="tag-good">ฟรี / พรีเมียม $10/ปี</td>
+              <td class="tag-good">ฟรี 100% Open Source</td>
+            </tr>
           </tbody>
         </table>
       </div>
     </div>
   </div>
 
-  <!-- SLIDE 5 — PALANTIR STORY -->
+  <!-- SLIDE 5 — WHO SHOULD USE WHAT -->
   <div class="slide s5">
     <div class="slide-inner">
-      <div class="label">The Quiet Winner</div>
-      <h2><span class="cyan">Palantir</span> เงียบที่สุด แต่ชนะที่สุด</h2>
-      <p class="sub">ชื่อมาจากหินวิเศษใน Lord of the Rings ที่ใช้ "มองเห็นทุกอย่าง"</p>
-      <div class="timeline">
-        <div class="tl-item">
-          <div class="tl-year">2003</div>
-          <div class="tl-title">ก่อตั้งโดย Peter Thiel (ผู้ร่วมก่อตั้ง PayPal)</div>
-          <div class="tl-desc">เริ่มจาก "จะเชื่อมข้อมูลรัฐที่กระจัดกระจายได้อย่างไร?"</div>
+      <div class="label">Recommendations</div>
+      <h2>เลือกตัวไหน <span class="cyan">เหมาะกับคุณที่สุด?</span></h2>
+      <p class="sub">ไม่มีตัวที่ดีที่สุด มีแต่ตัวที่ "เหมาะกับงาน" ที่สุด</p>
+
+      <div class="grid-3">
+        <div class="tool-card">
+          <div class="label blue">Office &amp; Casual</div>
+          <h3>ใช้ Windows Hello เมื่อ...</h3>
+          <p>• ใช้คอมพิวเตอร์เครื่องเดิมเป็นหลัก<br/>• ต้องการความเร็ว สแกนนิ้ว/PIN จบใน 1 วินาที<br/>• ไม่ต้องการลงโปรแกรมเพิ่ม</p>
         </div>
-        <div class="tl-item">
-          <div class="tl-year">2003 – 2022</div>
-          <div class="tl-title">20 ปีแห่งการสร้าง Data Infrastructure</div>
-          <div class="tl-desc">ฝังตัวกับ CIA, FBI, NSA, NATO — เก็บ Data จริง จัดระเบียบจริง</div>
+
+        <div class="tool-card highlight">
+          <div class="label green">Productivity &amp; Multi-OS</div>
+          <h3>ใช้ Bitwarden เมื่อ...</h3>
+          <p>• มีทั้งโน้ตบุ๊ก, iPhone, แท็บเล็ต, PC<br/>• ต้องแชร์ Passkeys ในทีมหรือครอบครัว<br/>• ต้องการระบบ Auto-fill อัตโนมัติทุกเบราว์เซอร์</p>
         </div>
-        <div class="tl-item">
-          <div class="tl-year">2023</div>
-          <div class="tl-title">เปิดตัว AIP (AI Platform)</div>
-          <div class="tl-desc">นำ LLM มาวางบน Data 20 ปี ข้อมูลไม่ออกนอกองค์กร รัฐบาลจึงใช้ได้</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-year">2024</div>
-          <div class="tl-title">ผลลัพธ์ปรากฏ</div>
-          <div class="tl-desc">ติด S&P 500 + Nasdaq-100 หุ้นบวก +340% กลายเป็น #1</div>
+
+        <div class="tool-card">
+          <div class="label yellow">IT Admin &amp; Security Pro</div>
+          <h3>ใช้ KeePassXC เมื่อ...</h3>
+          <p>• งานเซิร์ฟเวอร์ / เครื่องที่ห้ามต่อเน็ต (Air-gapped)<br/>• องค์กรมีนโยบายห้ามฝากข้อมูลบน Cloud<br/>• ต้องการถือ Master Key ไว้เอง 100%</p>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- SLIDE 6 — STATS -->
+  <!-- SLIDE 6 — STATS & IMPACT -->
   <div class="slide s6">
     <div class="slide-inner">
       <div class="label">Numbers Don't Lie</div>
-      <h2>ตัวเลขที่พูดแทน<span class="cyan">ทุกอย่าง</span></h2>
-      <p class="sub">ผลลัพธ์ปี 2024 ที่ไม่มีใครคาดคิด</p>
+      <h2>ทำไมองค์กรต้องเปลี่ยนเป็น <span class="cyan">Passkey</span></h2>
+      <p class="sub">ตัวเลขผลลัพธ์จากการใช้งานจริงทั่วโลก</p>
+
       <div class="stats-grid">
-        <div class="stat-card"><div class="stat-num">+340%</div><div class="stat-lbl">ผลตอบแทนหุ้น 2024<br/>#1 S&P 500</div></div>
-        <div class="stat-card"><div class="stat-num">$2.87B</div><div class="stat-lbl">Revenue ปี 2024<br/>(+29% YoY)</div></div>
-        <div class="stat-card"><div class="stat-num">+54%</div><div class="stat-lbl">US Commercial<br/>Growth YoY</div></div>
-        <div class="stat-card"><div class="stat-num">20 ปี</div><div class="stat-lbl">สะสม Data<br/>ก่อนใครรู้จัก AI</div></div>
+        <div class="stat-card">
+          <div class="stat-num">0%</div>
+          <div class="stat-lbl">ข้อมูลรั่วไหลจาก Server<br/>(ไม่มี Password ให้แฮก)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">100%</div>
+          <div class="stat-lbl">ป้องกัน Phishing<br/>(เว็บปลอมขอ Key ไม่ได้)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">4x</div>
+          <div class="stat-lbl">ล็อกอินเร็วขึ้น 4 เท่า<br/>(สแกนนิ้ว vs พิมพ์รหัส)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">-50%</div>
+          <div class="stat-lbl">ลดภาระ IT Helpdesk<br/>(ปัญหาคนลืมรหัสผ่าน)</div>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- SLIDE 7 — CLIENTS -->
+  <!-- SLIDE 7 — 3 BEST PRACTICES -->
   <div class="slide s7">
     <div class="slide-inner">
-      <div class="label">Real Clients</div>
-      <h2>ใครใช้ <span class="cyan">Palantir</span> บ้าง?</h2>
-      <p class="sub">ลูกค้าที่ไม่ใช้ถ้าของไม่จริง</p>
-      <div class="client-grid">
-        <div class="client-card"><div class="em">🇺🇸</div><div class="nm">CIA/FBI/NSA</div><div class="rl">Intelligence</div></div>
-        <div class="client-card"><div class="em">🪖</div><div class="nm">US Army</div><div class="rl">Battlefield AI</div></div>
-        <div class="client-card"><div class="em">🌍</div><div class="nm">NATO</div><div class="rl">Allied Defense</div></div>
-        <div class="client-card"><div class="em">🏥</div><div class="nm">NHS อังกฤษ</div><div class="rl">Healthcare</div></div>
-        <div class="client-card"><div class="em">🇺🇦</div><div class="nm">Ukraine</div><div class="rl">War Analytics</div></div>
-        <div class="client-card"><div class="em">🏭</div><div class="nm">Airbus/Ferrari</div><div class="rl">Manufacturing</div></div>
-      </div>
-      <div class="quote-box">
-        <div class="quote-text">AIP Bootcamp — ลูกค้ามาแค่ 5 วัน กลับพร้อม AI Solution ที่ใช้ได้จริง</div>
-        <div class="quote-auth">— กลยุทธ์ที่ทำให้ปิดดีลได้เกือบทุกครั้ง</div>
+      <div class="label">Best Practices</div>
+      <h2>3 ข้อควรจำ <span class="cyan">ก่อนเริ่มใช้ Passkey</span></h2>
+      <p class="sub">ใช้อย่างปลอดภัยและไม่มีวันติดล็อก</p>
+
+      <div class="fail-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px; text-align: left;">
+        <div class="tool-card">
+          <div class="tool-icon">📱</div>
+          <h3>1. ผูกอุปกรณ์สำรอง</h3>
+          <p>ผูก Passkey ไว้กับมือถือหรือ Password Manager เผื่อคอมพิวเตอร์เสีย</p>
+        </div>
+        <div class="tool-card">
+          <div class="tool-icon">💾</div>
+          <h3>2. สำรองไฟล์ Database</h3>
+          <p>ถ้าใช้ KeePassXC อย่าลืม Backup ไฟล์ .kdbx เก็บไว้ที่ปลอดภัยเป็นประจำ</p>
+        </div>
+        <div class="tool-card">
+          <div class="tool-icon">🔐</div>
+          <h3>3. เปิด 2FA กู้คืนบัญชี</h3>
+          <p>เก็บบันทึก Recovery Codes ไว้เสมอสำหรับกรณีฉุกเฉิน</p>
+        </div>
       </div>
     </div>
   </div>
@@ -722,15 +728,18 @@
   <div class="slide s8">
     <div class="slide-inner">
       <div class="label">Bottom Line</div>
-      <h2>ไม่ใช่ใครสร้าง <span class="cyan">AI เก่งที่สุด</span> ที่ชนะ<br/>แต่คือใครมี <span class="green">Data ดีที่สุด</span></h2>
-      <p class="sub">Palantir ใช้เวลา 20 ปีสร้างสิ่งที่ไม่มีใครสนใจ<br/>แต่เป็นสิ่งที่ AI ต้องการมากที่สุด</p>
-      <div class="punchline">ไหนใครซื้อ Palantir ไว้บ้างนะครับ 😄</div>
+      <h2>"รหัสผ่านที่ <span class="cyan">ปลอดภัยที่สุด</span><br/>คือรหัสผ่านที่ <span class="green">ไม่มีอยู่จริง</span>"</h2>
+      <p class="sub">เริ่มเปิดใช้งาน Passkey ในบัญชี Google, Apple, Microsoft ของคุณตั้งแต่วันนี้</p>
+      
+      <div class="punchline">วันนี้คุณพร้อมบอกลา Password แล้วหรือยัง? 🚀</div>
+      
       <div class="hashtags">
-        <span class="hashtag">#Palantir</span>
-        <span class="hashtag">#AI</span>
-        <span class="hashtag">#DataScience</span>
-        <span class="hashtag">#ITNews</span>
-        <span class="hashtag">#MorningBrief</span>
+        <span class="hashtag">#Passkeys</span>
+        <span class="hashtag">#WindowsHello</span>
+        <span class="hashtag">#Bitwarden</span>
+        <span class="hashtag">#KeePassXC</span>
+        <span class="hashtag">#CyberSecurity</span>
+        <span class="hashtag">#ITMorningBrief</span>
       </div>
     </div>
   </div>
@@ -784,7 +793,7 @@
 
   function go(dir) { goTo(current + dir); }
 
-  // Keyboard
+  // Keyboard Navigation
   document.addEventListener('keydown', e => {
     if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') go(1);
     if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp') go(-1);
