@@ -292,6 +292,35 @@
     .tool-card h3 { font-size: clamp(1rem, 1.4vw, 1.15rem); margin-bottom: 4px; color: var(--white); }
     .tool-card p { font-size: clamp(0.78rem, 1.05vw, 0.85rem); color: #cfd8e6; line-height: 1.45; }
 
+    /* Pro / Con Box inside Tool Cards */
+    .pro-con-box {
+      margin-top: clamp(8px, 1.2vh, 12px);
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      text-align: left;
+      background: rgba(0, 0, 0, 0.32);
+      padding: clamp(8px, 1vh, 10px) clamp(8px, 1vw, 10px);
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .pro-item {
+      font-size: clamp(0.72rem, 1vw, 0.8rem);
+      color: #e2e8f0;
+      line-height: 1.4;
+    }
+    .pro-item strong {
+      color: var(--green);
+    }
+    .con-item {
+      font-size: clamp(0.72rem, 1vw, 0.8rem);
+      color: #e2e8f0;
+      line-height: 1.4;
+    }
+    .con-item strong {
+      color: var(--yellow);
+    }
+
     /* Hero Showcase Big Logos */
     .hero-showcase {
       display: flex;
@@ -744,7 +773,7 @@
       ⛶ เต็มจอ
     </button>
 
-    <div class="slide-badge" id="topBadge">1 / 8</div>
+    <div class="slide-badge" id="topBadge">1 / 7</div>
   </div>
 </div>
 
@@ -820,112 +849,80 @@
     </div>
   </div>
 
-  <!-- SLIDE 3 — THE BIG 3 -->
+  <!-- SLIDE 3 — THE BIG 3 (3 สไตล์ 3 ปรัชญา + ข้อดี/ข้อด้อย) -->
   <div class="slide s3">
     <div class="slide-inner">
-      <div class="label">The Top 3 Tools</div>
+      <div class="label">The Big 3 Tools & Comparison</div>
       <h2>3 สไตล์ 3 ปรัชญาการเก็บ <span class="cyan">Passkey</span></h2>
-      <p class="sub">เลือกตามความต้องการและระดับความปลอดภัย</p>
+      <p class="sub">เปรียบเทียบจุดแข็ง &amp; ข้อจำกัด ของเครื่องมือยอดนิยมในหน้าเดียว</p>
 
       <div class="grid-3">
-        <div class="tool-card" style="text-align: center;">
+        <!-- Card 1: Windows Hello -->
+        <div class="tool-card" style="text-align: left;">
           <div>
             <div class="tool-logo-banner">
               <img src="assets/windows_hello.jpg" alt="Windows Hello" class="banner-img"/>
             </div>
-            <span class="tool-tag tag-blue" style="margin: 0 auto 8px auto;">OS Native / TPM 2.0 (Trusted Platform Module)</span>
-            <h3>Windows Hello</h3>
-            <p style="text-align: left; margin-top: 6px;">ติดมากับ Windows 11 สแกนหน้า/นิ้ว/<strong>PIN (Personal Identification Number)</strong> ผูกกับฮาร์ดแวร์ ปลอดภัยระดับชิป</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+              <h3 style="margin: 0; color: var(--cyan);">Windows Hello</h3>
+              <span class="tool-tag tag-blue" style="margin: 0;">OS Native</span>
+            </div>
+            <p style="margin-top: 4px;"><strong>ปรัชญา:</strong> ฝังในชิป <strong>TPM (Trusted Platform Module)</strong> บนเมนบอร์ด ล็อกอินด้วยสแกนนิ้ว/ใบหน้า/<strong>PIN</strong></p>
           </div>
-          <div style="font-size: 0.75rem; color: var(--cyan); margin-top: 10px; font-weight: 700;">★ สะดวกที่สุด ไม่ต้องลงแอป</div>
+
+          <div class="pro-con-box">
+            <div class="pro-item"><strong>✅ จุดเด่น:</strong> เร็วที่สุด สแกนนิ้ว 1 วิ, ฟรีในตัว Windows, ไร้รหัสผ่านหลุดทางเน็ต</div>
+            <div class="con-item"><strong>⚠️ ข้อจำกัด:</strong> ผูกติดกับคอมเครื่องนั้น (ย้ายเครื่องต้องตั้งค่าใหม่)</div>
+          </div>
         </div>
 
-        <div class="tool-card highlight" style="text-align: center;">
+        <!-- Card 2: Bitwarden -->
+        <div class="tool-card highlight" style="text-align: left;">
           <div>
             <div class="tool-logo-banner">
               <img src="assets/bitwarden.png" alt="Bitwarden" class="banner-img"/>
             </div>
-            <span class="tool-tag tag-green" style="margin: 0 auto 8px auto;">Cloud Sync / Cross-Platform</span>
-            <h3>Bitwarden</h3>
-            <p style="text-align: left; margin-top: 6px;">Password Manager ยอดนิยม ซิงค์ Passkeys ข้ามทุก <strong>OS (Operating System: PC, Mac, iPhone, Android)</strong> แบบ <strong>E2EE (End-to-End Encryption)</strong></p>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+              <h3 style="margin: 0; color: var(--green);">Bitwarden</h3>
+              <span class="tool-tag tag-green" style="margin: 0;">Cloud E2EE</span>
+            </div>
+            <p style="margin-top: 4px;"><strong>ปรัชญา:</strong> ซิงค์ข้ามทุก <strong>OS (PC, Mac, iOS, Android)</strong> ด้วยการเข้ารหัส <strong>E2EE (End-to-End Encryption)</strong></p>
           </div>
-          <div style="font-size: 0.75rem; color: var(--green); margin-top: 10px; font-weight: 700;">★ ยืดหยุ่นที่สุด คล่องตัวทุกที่</div>
+
+          <div class="pro-con-box">
+            <div class="pro-item"><strong>✅ จุดเด่น:</strong> คล่องตัวสูงสุด ซิงค์ได้ทุกเครื่อง ทุกเบราว์เซอร์, แชร์ในทีมได้</div>
+            <div class="con-item"><strong>⚠️ ข้อจำกัด:</strong> ต้องต่อเน็ตเพื่อซิงค์, ต้องรักษา Master Password ให้รัดกุม</div>
+          </div>
         </div>
 
-        <div class="tool-card" style="text-align: center;">
+        <!-- Card 3: KeePassXC -->
+        <div class="tool-card" style="text-align: left;">
           <div>
             <div class="tool-logo-banner">
               <img src="assets/keepassxc.jpg" alt="KeePassXC" class="banner-img"/>
             </div>
-            <span class="tool-tag tag-yellow" style="margin: 0 auto 8px auto;">100% Offline / Local Database</span>
-            <h3>KeePassXC</h3>
-            <p style="text-align: left; margin-top: 6px;">Open-Source ฐานข้อมูลไฟล์ .kdbx ในเครื่องตัวเอง ไม่ออกอินเทอร์เน็ต ไม่พึ่งพา Cloud ใดๆ</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+              <h3 style="margin: 0; color: var(--yellow);">KeePassXC</h3>
+              <span class="tool-tag tag-yellow" style="margin: 0;">100% Offline</span>
+            </div>
+            <p style="margin-top: 4px;"><strong>ปรัชญา:</strong> Open-Source เก็บเป็นไฟล์ฐานข้อมูล .kdbx ในเครื่องตัวเอง ไม่พึ่งพา Cloud</p>
           </div>
-          <div style="font-size: 0.75rem; color: var(--yellow); margin-top: 10px; font-weight: 700;">★ ปลอดภัย &amp; ไพรเวตสูงสุด</div>
+
+          <div class="pro-con-box">
+            <div class="pro-item"><strong>✅ จุดเด่น:</strong> ไพรเวตและปลอดภัยสูงสุด 100% ไร้คลาวด์, เราคุมกุญแจเองทั้งหมด</div>
+            <div class="con-item"><strong>⚠️ ข้อจำกัด:</strong> ซิงค์แบบ Manual (ก๊อปไฟล์เอง), ต้องดูแลการ Backup เอง</div>
+          </div>
         </div>
       </div>
 
       <div class="slide-note">
-        <span class="note-title">💡 หมายเหตุ:</span> <strong>PIN</strong> = รหัสตัวเลขส่วนบุคคลสำหรับปลดล็อกเฉพาะเครื่อง (ไม่ส่งออกเน็ต) | <strong>E2EE (End-to-End Encryption)</strong> = การเข้ารหัสลับต้นทางถึงปลายทาง ผู้ให้บริการคลาวด์ไม่สามารถอ่านข้อมูลได้
+        <span class="note-title">💡 หมายเหตุ:</span> <strong>TPM</strong> = ชิปความปลอดภัยบนเมนบอร์ด | <strong>E2EE</strong> = เข้ารหัสต้นทางถึงปลายทาง คลาวด์อ่านไม่ได้ | <strong>PIN</strong> = รหัสตัวเลขปลดล็อกเฉพาะเครื่อง
       </div>
     </div>
   </div>
 
-  <!-- SLIDE 4 — COMPARISON TABLE -->
+  <!-- SLIDE 4 — WHO SHOULD USE WHAT -->
   <div class="slide s4">
-    <div class="slide-inner">
-      <div class="label">Deep Comparison</div>
-      <h2>เปรียบเทียบ <span class="cyan">จุดแข็ง &amp; ข้อจำกัด</span></h2>
-      
-      <div class="tbl-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>เกณฑ์</th>
-              <th>Windows Hello</th>
-              <th>Bitwarden</th>
-              <th>KeePassXC</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>สถานที่เก็บ Key</td>
-              <td>ชิป TPM (Trusted Platform Module) ในเครื่อง</td>
-              <td>Cloud (E2EE: End-to-End Encryption)</td>
-              <td>ไฟล์ Local .kdbx ในเครื่อง / USB (Universal Serial Bus)</td>
-            </tr>
-            <tr>
-              <td>การซิงค์ข้ามอุปกรณ์</td>
-              <td class="tag-warn">✕ ผูกกับเครื่องนั้น</td>
-              <td class="tag-good">✓ ซิงค์ทุก OS (Operating System) ทันที</td>
-              <td class="tag-warn">Manual (ก๊อปไฟล์เอง)</td>
-            </tr>
-            <tr>
-              <td>การกู้คืน (Backup)</td>
-              <td>ผ่าน Microsoft Account</td>
-              <td class="tag-good">✓ สำรองบนคลาวด์</td>
-              <td>ต้องสำรองไฟล์ .kdbx เอง</td>
-            </tr>
-            <tr>
-              <td>ความเป็นส่วนตัว</td>
-              <td>สูง (ในชิปฮาร์ดแวร์)</td>
-              <td>สูง (Zero-Knowledge: ผู้ให้บริการอ่านไม่ได้)</td>
-              <td class="tag-good">สูงสุด (Offline 100%)</td>
-            </tr>
-            <tr>
-              <td>ค่าใช้จ่าย</td>
-              <td class="tag-good">ฟรี (Built-in ในตัว OS)</td>
-              <td class="tag-good">ฟรี / พรีเมียม $10/ปี</td>
-              <td class="tag-good">ฟรี 100% Open Source</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
-  <!-- SLIDE 5 — WHO SHOULD USE WHAT -->
-  <div class="slide s5">
     <div class="slide-inner">
       <div class="label">Recommendations</div>
       <h2>เลือกตัวไหน <span class="cyan">เหมาะกับคุณที่สุด?</span></h2>
@@ -957,8 +954,8 @@
     </div>
   </div>
 
-  <!-- SLIDE 6 — STATS & IMPACT -->
-  <div class="slide s6">
+  <!-- SLIDE 5 — STATS & IMPACT -->
+  <div class="slide s5">
     <div class="slide-inner">
       <div class="label">Numbers Don't Lie</div>
       <h2>ทำไมองค์กรต้องเปลี่ยนเป็น <span class="cyan">Passkey</span></h2>
@@ -985,8 +982,8 @@
     </div>
   </div>
 
-  <!-- SLIDE 7 — 3 BEST PRACTICES -->
-  <div class="slide s7">
+  <!-- SLIDE 6 — 3 BEST PRACTICES -->
+  <div class="slide s6">
     <div class="slide-inner">
       <div class="label">Best Practices</div>
       <h2>3 ข้อควรจำ <span class="cyan">ก่อนเริ่มใช้ Passkey</span></h2>
@@ -1012,8 +1009,8 @@
     </div>
   </div>
 
-  <!-- SLIDE 8 — SUMMARY & SECURITY ARCHITECTURE -->
-  <div class="slide s8">
+  <!-- SLIDE 7 — SUMMARY & SECURITY ARCHITECTURE -->
+  <div class="slide s7">
     <div class="slide-inner">
       <div class="label">Summary & Security Architecture</div>
       <h2>Passkey มาตรฐานความปลอดภัยใหม่<br/>ที่ <span class="cyan">ปิดตายทุกช่องโหว่เดิม</span></h2>
@@ -1099,7 +1096,7 @@
 </div>
 
 <script>
-  const TOTAL    = 8;
+  const TOTAL    = 7;
   let   current  = 0;
   let   curScale = 1.0; // Default 100%
 
