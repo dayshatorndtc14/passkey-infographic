@@ -280,6 +280,33 @@
     .tool-card h3 { font-size: 1.15rem; margin-bottom: 4px; color: var(--white); }
     .tool-card p { font-size: 0.85rem; color: #cfd8e6; line-height: 1.5; }
 
+    /* Hero Logos */
+    .hero-logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+    .logo-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1.5px solid var(--border);
+      border-radius: 100px;
+      padding: 6px 18px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+      transition: transform 0.2s, background 0.2s;
+    }
+    .logo-pill:hover { transform: translateY(-2px); }
+    .logo-pill svg { flex-shrink: 0; }
+    .logo-pill.win { border-color: rgba(0, 212, 255, 0.45); color: #00d4ff; background: rgba(0, 212, 255, 0.1); }
+    .logo-pill.bit { border-color: rgba(59, 130, 246, 0.5); color: #60a5fa; background: rgba(59, 130, 246, 0.12); }
+    .logo-pill.kee { border-color: rgba(0, 255, 136, 0.45); color: #00ff88; background: rgba(0, 255, 136, 0.1); }
+
     /* Concept 2-Box */
     .key-box-grid {
       display: grid;
@@ -515,7 +542,33 @@
     <div class="slide-inner">
       <div class="badge"><span class="badge-dot"></span> Next-Gen Authentication</div>
       <h1>ลาก่อน Password!<br/>เข้าสู่ยุค <span class="cyan">Passkey</span></h1>
-      <p class="sub">สแกนนิ้วเดียวจบ ปลอดภัยกว่าเดิม 100%<br/>พร้อมเทียบ 3 เครื่องมือตัวท็อป: Windows Hello vs Bitwarden vs KeePassXC</p>
+      <p class="sub">สแกนนิ้วเดียวจบ ปลอดภัยกว่าเดิม 100%<br/>พร้อมเทียบ 3 เครื่องมือตัวท็อป</p>
+      
+      <!-- 3 Products Logos -->
+      <div class="hero-logos">
+        <div class="logo-pill win" title="Windows Hello">
+          <svg width="20" height="20" viewBox="0 0 88 88" fill="currentColor">
+            <path d="M0 12.402l35.687-4.86.016 34.423-35.67.203zm35.67 33.529l.028 34.453L.028 75.48.016 45.728zm4.326-39.027L87.914 0v41.527l-47.918.378zm47.918 43.195l-.014 41.901-47.89-6.742V46.06z"/>
+          </svg>
+          <span>Windows Hello</span>
+        </div>
+
+        <div class="logo-pill bit" title="Bitwarden">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 1.75L3.5 5.5v6.2c0 5.2 3.6 10.1 8.5 11.3 4.9-1.2 8.5-6.1 8.5-11.3V5.5L12 1.75zm0 2.22l6.5 2.87v4.86c0 4.1-2.7 8-6.5 9.1-3.8-1.1-6.5-5-6.5-9.1V6.84L12 3.97z"/>
+            <path d="M12 7.2a2 2 0 100 4 2 2 0 000-4zm-1.2 4.8h2.4v3.5h-2.4z"/>
+          </svg>
+          <span>Bitwarden</span>
+        </div>
+
+        <div class="logo-pill kee" title="KeePassXC">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C8.69 2 6 4.69 6 8v3H5c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-8c0-1.1-.9-2-2-2h-1V8c0-3.31-2.69-6-6-6zm0 2c2.21 0 4 1.79 4 4v3H8V8c0-2.21 1.79-4 4-4zm0 10c1.1 0 2 .9 2 2 0 .74-.4 1.39-1 1.73V19h-2v-1.27c-.6-.34-1-.99-1-1.73 0-1.1.9-2 2-2z"/>
+          </svg>
+          <span>KeePassXC</span>
+        </div>
+      </div>
+
       <p style="margin-top: 24px; font-size: 0.85rem; color: var(--gray);">👉 กดปุ่ม "ถัดไป" หรือลูกศรขวาเพื่อเริ่ม</p>
     </div>
   </div>
