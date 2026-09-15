@@ -615,7 +615,7 @@
     <div class="slide-inner">
       <div class="badge"><span class="badge-dot"></span> Next-Gen Authentication</div>
       <h1>ลาก่อน Password!<br/>เข้าสู่ยุค <span class="cyan">Passkey</span></h1>
-      <p class="sub">สแกนนิ้วเดียวจบ ปลอดภัยกว่าเดิม 100%<br/>พร้อมเทียบ 3 เครื่องมือตัวท็อป</p>
+      <p class="sub">สแกนนิ้วเดียวจบ ปลอดภัยกว่าเดิม 100% มาตรฐาน <strong>FIDO2 (Fast Identity Online)</strong> &amp; <strong>WebAuthn (Web Authentication)</strong><br/>พร้อมเทียบ 3 เครื่องมือตัวท็อป</p>
       
       <!-- 3 Products Big Logos Showcase (Centered & Large) -->
       <div class="hero-showcase">
@@ -650,13 +650,13 @@
     <div class="slide-inner">
       <div class="label">How it works</div>
       <h2>หลักการ <span class="green">"กุญแจ 2 ดอก"</span></h2>
-      <p class="sub">ตัดระบบกรอกรหัสผ่านทิ้ง ใช้ Cryptography แทนที่ทั้งหมด</p>
+      <p class="sub">ตัดระบบกรอกรหัสผ่านทิ้ง ใช้ Cryptography (การเข้ารหัสลับ) แทนที่ทั้งหมด</p>
       
       <div class="key-box-grid">
         <div class="key-box private">
           <div class="label green">🗝️ กุญแจส่วนตัว (Private Key)</div>
           <h3>ฝังอยู่ในชิปเครื่องเรา</h3>
-          <p>เก็บใน TPM เมนบอร์ด หรือ Password Manager ปลดล็อกด้วยสแกนนิ้ว/ใบหน้า <strong>ไม่เคยส่งออกไปไหนเด็ดขาด</strong></p>
+          <p>เก็บใน <strong>TPM (Trusted Platform Module: ชิปความปลอดภัยบนเมนบอร์ด)</strong> หรือ Password Manager ปลดล็อกด้วยสแกนนิ้ว/ใบหน้า <strong>ไม่เคยส่งออกไปไหนเด็ดขาด</strong></p>
         </div>
         <div class="key-box public">
           <div class="label cyan">🔓 กุญแจสาธารณะ (Public Key)</div>
@@ -684,9 +684,9 @@
             <div class="tool-logo-banner">
               <img src="assets/windows_hello.jpg" alt="Windows Hello" class="banner-img"/>
             </div>
-            <span class="tool-tag tag-blue" style="margin: 0 auto 8px auto;">OS Native / TPM 2.0</span>
+            <span class="tool-tag tag-blue" style="margin: 0 auto 8px auto;">OS Native / TPM 2.0 (Trusted Platform Module)</span>
             <h3>Windows Hello</h3>
-            <p style="text-align: left; margin-top: 6px;">ติดมากับ Windows 11 สแกนหน้า/นิ้ว/PIN ผูกกับฮาร์ดแวร์ ปลอดภัยระดับชิป</p>
+            <p style="text-align: left; margin-top: 6px;">ติดมากับ Windows 11 สแกนหน้า/นิ้ว/<strong>PIN (Personal Identification Number)</strong> ผูกกับฮาร์ดแวร์ ปลอดภัยระดับชิป</p>
           </div>
           <div style="font-size: 0.75rem; color: var(--cyan); margin-top: 10px; font-weight: 700;">★ สะดวกที่สุด ไม่ต้องลงแอป</div>
         </div>
@@ -696,9 +696,9 @@
             <div class="tool-logo-banner">
               <img src="assets/bitwarden.png" alt="Bitwarden" class="banner-img"/>
             </div>
-            <span class="tool-tag tag-green" style="margin: 0 auto 8px auto;">Cloud Sync / Multi-Device</span>
+            <span class="tool-tag tag-green" style="margin: 0 auto 8px auto;">Cloud Sync / Cross-Platform</span>
             <h3>Bitwarden</h3>
-            <p style="text-align: left; margin-top: 6px;">Password Manager ยอดนิยม ซิงค์ Passkeys ข้ามทุกเครื่อง (PC, Mac, iPhone, Android) แบบ E2EE</p>
+            <p style="text-align: left; margin-top: 6px;">Password Manager ยอดนิยม ซิงค์ Passkeys ข้ามทุก <strong>OS (Operating System: PC, Mac, iPhone, Android)</strong> แบบ <strong>E2EE (End-to-End Encryption)</strong></p>
           </div>
           <div style="font-size: 0.75rem; color: var(--green); margin-top: 10px; font-weight: 700;">★ ยืดหยุ่นที่สุด คล่องตัวทุกที่</div>
         </div>
@@ -708,9 +708,9 @@
             <div class="tool-logo-banner">
               <img src="assets/keepassxc.jpg" alt="KeePassXC" class="banner-img"/>
             </div>
-            <span class="tool-tag tag-yellow" style="margin: 0 auto 8px auto;">100% Offline / Local</span>
+            <span class="tool-tag tag-yellow" style="margin: 0 auto 8px auto;">100% Offline / Local Database</span>
             <h3>KeePassXC</h3>
-            <p style="text-align: left; margin-top: 6px;">Open-Source ฐานข้อมูล .kdbx ในเครื่องตัวเอง ไม่ออกเน็ต ไม่พึ่งพาคลาวด์ใดๆ</p>
+            <p style="text-align: left; margin-top: 6px;">Open-Source ฐานข้อมูลไฟล์ .kdbx ในเครื่องตัวเอง ไม่ออกอินเทอร์เน็ต ไม่พึ่งพา Cloud ใดๆ</p>
           </div>
           <div style="font-size: 0.75rem; color: var(--yellow); margin-top: 10px; font-weight: 700;">★ ปลอดภัย &amp; ไพรเวตสูงสุด</div>
         </div>
@@ -737,31 +737,31 @@
           <tbody>
             <tr>
               <td>สถานที่เก็บ Key</td>
-              <td>ชิป TPM ในเครื่อง</td>
-              <td>Cloud (Encrypted E2EE)</td>
-              <td>ไฟล์ Local ในเครื่อง / USB</td>
+              <td>ชิป TPM (Trusted Platform Module) ในเครื่อง</td>
+              <td>Cloud (E2EE: End-to-End Encryption)</td>
+              <td>ไฟล์ Local .kdbx ในเครื่อง / USB (Universal Serial Bus)</td>
             </tr>
             <tr>
               <td>การซิงค์ข้ามอุปกรณ์</td>
               <td class="tag-warn">✕ ผูกกับเครื่องนั้น</td>
-              <td class="tag-good">✓ ซิงค์ทุก OS ทันที</td>
+              <td class="tag-good">✓ ซิงค์ทุก OS (Operating System) ทันที</td>
               <td class="tag-warn">Manual (ก๊อปไฟล์เอง)</td>
             </tr>
             <tr>
               <td>การกู้คืน (Backup)</td>
-              <td>ผ่าน Microsoft Acc</td>
+              <td>ผ่าน Microsoft Account</td>
               <td class="tag-good">✓ สำรองบนคลาวด์</td>
               <td>ต้องสำรองไฟล์ .kdbx เอง</td>
             </tr>
             <tr>
               <td>ความเป็นส่วนตัว</td>
-              <td>สูง (ในชิป)</td>
-              <td>สูง (Zero-Knowledge)</td>
+              <td>สูง (ในชิปฮาร์ดแวร์)</td>
+              <td>สูง (Zero-Knowledge: ผู้ให้บริการอ่านไม่ได้)</td>
               <td class="tag-good">สูงสุด (Offline 100%)</td>
             </tr>
             <tr>
               <td>ค่าใช้จ่าย</td>
-              <td class="tag-good">ฟรี (ในตัว OS)</td>
+              <td class="tag-good">ฟรี (Built-in ในตัว OS)</td>
               <td class="tag-good">ฟรี / พรีเมียม $10/ปี</td>
               <td class="tag-good">ฟรี 100% Open Source</td>
             </tr>
@@ -782,19 +782,19 @@
         <div class="tool-card">
           <div class="label blue">Office &amp; Casual</div>
           <h3>ใช้ Windows Hello เมื่อ...</h3>
-          <p>• ใช้คอมพิวเตอร์เครื่องเดิมเป็นหลัก<br/>• ต้องการความเร็ว สแกนนิ้ว/PIN จบใน 1 วินาที<br/>• ไม่ต้องการลงโปรแกรมเพิ่ม</p>
+          <p>• ใช้คอมพิวเตอร์เครื่องเดิมเป็นหลัก<br/>• ต้องการความเร็ว สแกนนิ้ว/<strong>PIN (Personal Identification Number)</strong> จบใน 1 วินาที<br/>• ไม่ต้องการลงโปรแกรมเพิ่ม</p>
         </div>
 
         <div class="tool-card highlight">
           <div class="label green">Productivity &amp; Multi-OS</div>
           <h3>ใช้ Bitwarden เมื่อ...</h3>
-          <p>• มีทั้งโน้ตบุ๊ก, iPhone, แท็บเล็ต, PC<br/>• ต้องแชร์ Passkeys ในทีมหรือครอบครัว<br/>• ต้องการระบบ Auto-fill อัตโนมัติทุกเบราว์เซอร์</p>
+          <p>• มีหลายอุปกรณ์ (<strong>PC: Personal Computer</strong>, Mac, iPhone, Android)<br/>• ต้องแชร์ Passkeys ในทีมหรือองค์กร<br/>• ต้องการระบบ Auto-fill อัตโนมัติทุกเบราว์เซอร์</p>
         </div>
 
         <div class="tool-card">
           <div class="label yellow">IT Admin &amp; Security Pro</div>
           <h3>ใช้ KeePassXC เมื่อ...</h3>
-          <p>• งานเซิร์ฟเวอร์ / เครื่องที่ห้ามต่อเน็ต (Air-gapped)<br/>• องค์กรมีนโยบายห้ามฝากข้อมูลบน Cloud<br/>• ต้องการถือ Master Key ไว้เอง 100%</p>
+          <p>• งานเซิร์ฟเวอร์ / เครื่องที่ห้ามต่อเน็ต (<strong>Air-Gapped Environment</strong>)<br/>• องค์กรมีนโยบายห้ามฝากข้อมูลบน Cloud<br/>• ต้องการถือ Master Key ไว้เอง 100%</p>
         </div>
       </div>
     </div>
@@ -822,7 +822,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-num">-50%</div>
-          <div class="stat-lbl">ลดภาระ IT Helpdesk<br/>(ปัญหาคนลืมรหัสผ่าน)</div>
+          <div class="stat-lbl">ลดภาระ <strong>IT Helpdesk</strong><br/>(ฝ่ายสนับสนุนด้านไอที)</div>
         </div>
       </div>
     </div>
@@ -849,7 +849,7 @@
         <div class="tool-card">
           <div class="tool-icon">🔐</div>
           <h3>3. เปิด 2FA กู้คืนบัญชี</h3>
-          <p>เก็บบันทึก Recovery Codes ไว้เสมอสำหรับกรณีฉุกเฉิน</p>
+          <p>เปิด <strong>2FA (Two-Factor Authentication: ยืนยันตัวตน 2 ชั้น)</strong> และบันทึก <strong>Recovery Codes (รหัสกู้คืนฉุกเฉิน)</strong> ไว้เสมอ</p>
         </div>
       </div>
     </div>
@@ -867,19 +867,19 @@
           <h3 style="font-size: 1rem; color: var(--cyan); display: flex; align-items: center; gap: 8px;">
             <img src="assets/windows_hello.jpg" alt="Windows Hello" style="width:20px;height:20px;border-radius:4px;background:#fff;padding:1px;object-fit:contain;"/> Windows Hello
           </h3>
-          <p style="font-size: 0.82rem; margin-top: 6px;">สะดวก รวดเร็ว ผูกกับชิป TPM ในเครื่อง เหมาะกับการใช้งานประจำวัน</p>
+          <p style="font-size: 0.82rem; margin-top: 6px;">สะดวก รวดเร็ว ผูกกับชิป <strong>TPM (Trusted Platform Module)</strong> ในเครื่อง เหมาะกับการใช้งานประจำวัน</p>
         </div>
         <div class="tool-card" style="padding: 14px 16px;">
           <h3 style="font-size: 1rem; color: var(--green); display: flex; align-items: center; gap: 8px;">
             <img src="assets/bitwarden.png" alt="Bitwarden" style="width:20px;height:20px;border-radius:4px;background:#fff;padding:1px;object-fit:contain;"/> Bitwarden
           </h3>
-          <p style="font-size: 0.82rem; margin-top: 6px;">คล่องตัว ซิงค์ข้ามทุกอุปกรณ์แบบ E2EE เหมาะกับคนใช้หลาย OS</p>
+          <p style="font-size: 0.82rem; margin-top: 6px;">คล่องตัว ซิงค์ข้ามทุก <strong>OS (Operating System)</strong> แบบ <strong>E2EE (End-to-End Encryption)</strong></p>
         </div>
         <div class="tool-card" style="padding: 14px 16px;">
           <h3 style="font-size: 1rem; color: var(--yellow); display: flex; align-items: center; gap: 8px;">
             <img src="assets/keepassxc.jpg" alt="KeePassXC" style="width:20px;height:20px;border-radius:4px;background:#fff;padding:1px;object-fit:contain;"/> KeePassXC
           </h3>
-          <p style="font-size: 0.82rem; margin-top: 6px;">ออฟไลน์ 100% ไม่พึ่งพาคลาวด์ เหมาะกับเซิร์ฟเวอร์และข้อมูลลับสูง</p>
+          <p style="font-size: 0.82rem; margin-top: 6px;">ออฟไลน์ 100% ไม่พึ่งพา Cloud เหมาะกับเซิร์ฟเวอร์และข้อมูลลับสูง</p>
         </div>
       </div>
 
