@@ -280,41 +280,79 @@
     .tool-card h3 { font-size: 1.15rem; margin-bottom: 4px; color: var(--white); }
     .tool-card p { font-size: 0.85rem; color: #cfd8e6; line-height: 1.5; }
 
-    /* Hero Logos */
-    .hero-logos {
+    /* Hero Showcase Big Logos */
+    .hero-showcase {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 14px;
-      margin-top: 20px;
-      flex-wrap: wrap;
+      gap: 20px;
+      margin: 22px auto 14px auto;
+      max-width: 680px;
+      width: 100%;
     }
-    .logo-pill {
-      display: inline-flex;
+    @media (max-width: 600px) {
+      .hero-showcase { gap: 10px; }
+    }
+    .hero-logo-card {
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 10px;
-      border: 1.5px solid var(--border);
-      border-radius: 100px;
-      padding: 6px 18px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
-      transition: transform 0.2s, background 0.2s;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid var(--border);
+      border-radius: 18px;
+      padding: 16px 18px;
+      flex: 1;
+      max-width: 190px;
+      transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
     }
-    .logo-pill:hover { transform: translateY(-2px); }
-    .logo-img {
-      width: 26px;
-      height: 26px;
-      object-fit: contain;
-      border-radius: 6px;
+    .hero-logo-card:hover {
+      transform: translateY(-4px) scale(1.04);
+    }
+    .hero-logo-card.win {
+      border-color: rgba(0, 212, 255, 0.45);
+      background: linear-gradient(180deg, rgba(0, 212, 255, 0.14) 0%, rgba(6, 14, 31, 0.4) 100%);
+    }
+    .hero-logo-card.bit {
+      border-color: rgba(59, 130, 246, 0.55);
+      background: linear-gradient(180deg, rgba(59, 130, 246, 0.16) 0%, rgba(6, 14, 31, 0.4) 100%);
+    }
+    .hero-logo-card.kee {
+      border-color: rgba(0, 255, 136, 0.45);
+      background: linear-gradient(180deg, rgba(0, 255, 136, 0.14) 0%, rgba(6, 14, 31, 0.4) 100%);
+    }
+    .logo-frame {
+      width: 68px;
+      height: 68px;
+      border-radius: 16px;
       background: #ffffff;
-      padding: 2px;
-      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+      margin-bottom: 10px;
+    }
+    @media (max-width: 600px) {
+      .logo-frame { width: 50px; height: 50px; border-radius: 12px; padding: 4px; }
+    }
+    .hero-logo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
       display: block;
     }
-    .logo-pill.win { border-color: rgba(0, 212, 255, 0.45); color: #00d4ff; background: rgba(0, 212, 255, 0.1); }
-    .logo-pill.bit { border-color: rgba(59, 130, 246, 0.5); color: #60a5fa; background: rgba(59, 130, 246, 0.12); }
-    .logo-pill.kee { border-color: rgba(0, 255, 136, 0.45); color: #00ff88; background: rgba(0, 255, 136, 0.1); }
+    .hero-logo-name {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: 0.2px;
+      text-align: center;
+    }
+    .hero-logo-card.win .hero-logo-name { color: #00d4ff; }
+    .hero-logo-card.bit .hero-logo-name { color: #60a5fa; }
+    .hero-logo-card.kee .hero-logo-name { color: #00ff88; }
 
     /* Concept 2-Box */
     .key-box-grid {
@@ -553,21 +591,27 @@
       <h1>ลาก่อน Password!<br/>เข้าสู่ยุค <span class="cyan">Passkey</span></h1>
       <p class="sub">สแกนนิ้วเดียวจบ ปลอดภัยกว่าเดิม 100%<br/>พร้อมเทียบ 3 เครื่องมือตัวท็อป</p>
       
-      <!-- 3 Products Logos -->
-      <div class="hero-logos">
-        <div class="logo-pill win" title="Windows Hello">
-          <img src="assets/windows_hello.jpg" alt="Windows Hello" class="logo-img"/>
-          <span>Windows Hello</span>
+      <!-- 3 Products Big Logos Showcase (Centered & Large) -->
+      <div class="hero-showcase">
+        <div class="hero-logo-card win" title="Windows Hello">
+          <div class="logo-frame">
+            <img src="assets/windows_hello.jpg" alt="Windows Hello" class="hero-logo-img"/>
+          </div>
+          <span class="hero-logo-name">Windows Hello</span>
         </div>
 
-        <div class="logo-pill bit" title="Bitwarden">
-          <img src="assets/bitwarden.png" alt="Bitwarden" class="logo-img"/>
-          <span>Bitwarden</span>
+        <div class="hero-logo-card bit" title="Bitwarden">
+          <div class="logo-frame">
+            <img src="assets/bitwarden.png" alt="Bitwarden" class="hero-logo-img"/>
+          </div>
+          <span class="hero-logo-name">Bitwarden</span>
         </div>
 
-        <div class="logo-pill kee" title="KeePassXC">
-          <img src="assets/keepassxc.jpg" alt="KeePassXC" class="logo-img"/>
-          <span>KeePassXC</span>
+        <div class="hero-logo-card kee" title="KeePassXC">
+          <div class="logo-frame">
+            <img src="assets/keepassxc.jpg" alt="KeePassXC" class="hero-logo-img"/>
+          </div>
+          <span class="hero-logo-name">KeePassXC</span>
         </div>
       </div>
 
@@ -609,32 +653,38 @@
       <p class="sub">เลือกตามความต้องการและระดับความปลอดภัย</p>
 
       <div class="grid-3">
-        <div class="tool-card">
+        <div class="tool-card" style="text-align: center;">
           <div>
-            <div class="tool-icon"><img src="assets/windows_hello.jpg" alt="Windows Hello" style="width:46px;height:46px;border-radius:12px;object-fit:contain;background:#fff;padding:3px;box-shadow:0 4px 12px rgba(0,0,0,0.3);margin-bottom:6px;"/></div>
-            <span class="tool-tag tag-blue">OS Native / TPM 2.0</span>
+            <div class="tool-icon" style="display:flex; justify-content:center; margin-bottom:10px;">
+              <img src="assets/windows_hello.jpg" alt="Windows Hello" style="width:58px;height:58px;border-radius:14px;object-fit:contain;background:#fff;padding:4px;box-shadow:0 6px 16px rgba(0,0,0,0.35);"/>
+            </div>
+            <span class="tool-tag tag-blue" style="margin: 0 auto 8px auto;">OS Native / TPM 2.0</span>
             <h3>Windows Hello</h3>
-            <p>ติดมากับ Windows 11 สแกนหน้า/นิ้ว/PIN ผูกกับฮาร์ดแวร์ ปลอดภัยระดับชิป</p>
+            <p style="text-align: left; margin-top: 6px;">ติดมากับ Windows 11 สแกนหน้า/นิ้ว/PIN ผูกกับฮาร์ดแวร์ ปลอดภัยระดับชิป</p>
           </div>
           <div style="font-size: 0.75rem; color: var(--cyan); margin-top: 10px; font-weight: 700;">★ สะดวกที่สุด ไม่ต้องลงแอป</div>
         </div>
 
-        <div class="tool-card highlight">
+        <div class="tool-card highlight" style="text-align: center;">
           <div>
-            <div class="tool-icon"><img src="assets/bitwarden.png" alt="Bitwarden" style="width:46px;height:46px;border-radius:12px;object-fit:contain;background:#fff;padding:3px;box-shadow:0 4px 12px rgba(0,0,0,0.3);margin-bottom:6px;"/></div>
-            <span class="tool-tag tag-green">Cloud Sync / Multi-Device</span>
+            <div class="tool-icon" style="display:flex; justify-content:center; margin-bottom:10px;">
+              <img src="assets/bitwarden.png" alt="Bitwarden" style="width:58px;height:58px;border-radius:14px;object-fit:contain;background:#fff;padding:4px;box-shadow:0 6px 16px rgba(0,0,0,0.35);"/>
+            </div>
+            <span class="tool-tag tag-green" style="margin: 0 auto 8px auto;">Cloud Sync / Multi-Device</span>
             <h3>Bitwarden</h3>
-            <p>Password Manager ยอดนิยม ซิงค์ Passkeys ข้ามทุกเครื่อง (PC, Mac, iPhone, Android) แบบ E2EE</p>
+            <p style="text-align: left; margin-top: 6px;">Password Manager ยอดนิยม ซิงค์ Passkeys ข้ามทุกเครื่อง (PC, Mac, iPhone, Android) แบบ E2EE</p>
           </div>
           <div style="font-size: 0.75rem; color: var(--green); margin-top: 10px; font-weight: 700;">★ ยืดหยุ่นที่สุด คล่องตัวทุกที่</div>
         </div>
 
-        <div class="tool-card">
+        <div class="tool-card" style="text-align: center;">
           <div>
-            <div class="tool-icon"><img src="assets/keepassxc.jpg" alt="KeePassXC" style="width:46px;height:46px;border-radius:12px;object-fit:contain;background:#fff;padding:3px;box-shadow:0 4px 12px rgba(0,0,0,0.3);margin-bottom:6px;"/></div>
-            <span class="tool-tag tag-yellow">100% Offline / Local</span>
+            <div class="tool-icon" style="display:flex; justify-content:center; margin-bottom:10px;">
+              <img src="assets/keepassxc.jpg" alt="KeePassXC" style="width:58px;height:58px;border-radius:14px;object-fit:contain;background:#fff;padding:4px;box-shadow:0 6px 16px rgba(0,0,0,0.35);"/>
+            </div>
+            <span class="tool-tag tag-yellow" style="margin: 0 auto 8px auto;">100% Offline / Local</span>
             <h3>KeePassXC</h3>
-            <p>Open-Source ฐานข้อมูล .kdbx ในเครื่องตัวเอง ไม่ออกเน็ต ไม่พึ่งพาคลาวด์ใดๆ</p>
+            <p style="text-align: left; margin-top: 6px;">Open-Source ฐานข้อมูล .kdbx ในเครื่องตัวเอง ไม่ออกเน็ต ไม่พึ่งพาคลาวด์ใดๆ</p>
           </div>
           <div style="font-size: 0.75rem; color: var(--yellow); margin-top: 10px; font-weight: 700;">★ ปลอดภัย &amp; ไพรเวตสูงสุด</div>
         </div>
