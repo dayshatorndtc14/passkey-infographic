@@ -396,23 +396,23 @@
     .hero-logo-card.bit .hero-logo-name { color: #60a5fa; }
     .hero-logo-card.kee .hero-logo-name { color: #00ff88; }
 
-    /* Slide 3 Tool Logo Banner */
+    /* Slide 3 Tool Logo Banner (2x Larger) */
     .tool-logo-banner {
       width: 100%;
-      height: clamp(50px, 7.5vh, 75px);
-      border-radius: 12px;
+      height: clamp(95px, 14.5vh, 140px);
+      border-radius: 14px;
       background: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 4px 10px;
-      margin-bottom: clamp(6px, 1vh, 10px);
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
-      border: 1.5px solid rgba(255, 255, 255, 0.9);
-      transition: transform 0.2s;
+      padding: clamp(8px, 1.2vh, 14px) clamp(10px, 1.5vw, 18px);
+      margin-bottom: clamp(8px, 1.2vh, 12px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+      border: 2px solid rgba(255, 255, 255, 0.95);
+      transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
     .tool-card:hover .tool-logo-banner {
-      transform: scale(1.02);
+      transform: scale(1.04);
     }
     .banner-img {
       width: 100%;
