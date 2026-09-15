@@ -1045,72 +1045,72 @@
     </div>
   </div>
 
-  <!-- SLIDE 7 — SUMMARY & SECURITY ARCHITECTURE -->
+  <!-- SLIDE 7 — SUMMARY & KEY TAKEAWAYS -->
   <div class="slide s7">
     <div class="slide-inner">
-      <div class="label">Summary & Security Architecture</div>
-      <h2>Passkey มาตรฐานความปลอดภัยใหม่<br/>ที่ <span class="cyan">ปิดตายทุกช่องโหว่เดิม</span></h2>
-      <p class="sub">สถาปัตยกรรมความปลอดภัย 3 ระดับ (Zero Shared Secrets & Phishing-Proof)</p>
+      <div class="label">Summary &amp; Key Takeaways</div>
+      <h2>สรุปภาพรวม: ทำไม <span class="cyan">Passkey</span> ถึงปลอดภัยที่สุด?</h2>
+      <p class="sub">ตัดทุกความเสี่ยงเดิมใน 3 จุดสำคัญ — ฝั่งเรา, ระหว่างทาง, และฝั่งเว็บ</p>
       
       <!-- 3-PILLAR SECURITY GRAPHIC -->
       <div class="sec-pipeline">
-        <!-- 1. ต้นทาง -->
+        <!-- 1. ฝั่งเรา -->
         <div class="pipeline-node node-client">
-          <div class="node-badge">1. ต้นทาง (Client)</div>
-          <div class="node-icon">💻🔐</div>
+          <div class="node-badge">1. ฝั่งเรา (เครื่องผู้ใช้)</div>
+          <div class="node-icon">💻👆</div>
           <div class="node-title">ไม่มีรหัสผ่านให้หลุด</div>
-          <p class="node-desc">เก็บ <strong>Private Key</strong> เฉพาะในเครื่อง ไม่เคยส่งออกทางเน็ต และไม่มีรหัสผ่านให้เผลอกรอก</p>
-          <div class="node-tag tag-secure">🛡️ Key ไม่เคยออกจากเครื่อง</div>
+          <p class="node-desc">ล็อกอินด้วยสแกนนิ้ว ไม่ต้องพิมพ์รหัสผ่าน จึงไม่มีทางที่รหัสจะเผลอหลุดหรือโดนแอบดู</p>
+          <div class="node-tag tag-secure">🛡️ กุญแจอยู่ในเครื่องเรา</div>
         </div>
 
         <!-- Connector 1 -> 2 -->
         <div class="pipeline-arrow">
-          <span class="arrow-label">ตรวจ Domain</span>
+          <span class="arrow-label">ตรวจเว็บจริง</span>
           <span class="arrow-icon">➔</span>
         </div>
 
-        <!-- 2. ตรงกลาง -->
+        <!-- 2. ระหว่างทาง -->
         <div class="pipeline-node node-middle">
-          <div class="node-badge">2. ตรงกลาง (Browser)</div>
+          <div class="node-badge">2. ระหว่างทาง (เบราว์เซอร์)</div>
           <div class="node-icon">🌐🛡️</div>
-          <div class="node-title">ล็อกส่งเฉพาะเว็บจริง</div>
-          <p class="node-desc">ระบบตรวจ <strong>Origin Binding</strong> อัตโนมัติ หากเจอเว็บปลอม/Phishing จะตัดการเชื่อมต่อทันที</p>
-          <div class="node-tag tag-block">🚫 เว็บปลอมหลอกไม่ได้ 100%</div>
+          <div class="node-title">เว็บปลอมหลอกไม่ได้</div>
+          <p class="node-desc">เบราว์เซอร์จะส่งกุญแจให้เฉพาะเว็บจริงเท่านั้น ต่อให้เราเผลอกดลิงก์ปลอม กุญแจก็ไม่หลุด</p>
+          <div class="node-tag tag-block">🚫 ตัดวงจร Phishing 100%</div>
         </div>
 
         <!-- Connector 2 -> 3 -->
         <div class="pipeline-arrow">
-          <span class="arrow-label">ส่งแค่ Signature</span>
+          <span class="arrow-label">ยืนยันตัวตน</span>
           <span class="arrow-icon">➔</span>
         </div>
 
-        <!-- 3. ปลายทาง -->
+        <!-- 3. ฝั่งเว็บ -->
         <div class="pipeline-node node-server">
-          <div class="node-badge">3. ปลายทาง (Server)</div>
+          <div class="node-badge">3. ฝั่งเว็บ (เซิร์ฟเวอร์)</div>
           <div class="node-icon">☁️🔒</div>
           <div class="node-title">ไม่มีรหัสผ่านให้แฮก</div>
-          <p class="node-desc">เก็บบนคลาวด์แค่ <strong>Public Key</strong> ต่อให้ฐานข้อมูลถูกเจาะ แฮกเกอร์ก็ไม่มีรหัสผ่านให้ขโมย</p>
-          <div class="node-tag tag-server">✅ ไร้ Shared Secret</div>
+          <p class="node-desc">เว็บไม่ได้เก็บรหัสผ่านของเราไว้เลย ต่อให้ฐานข้อมูลเว็บโดนเจาะ ก็ไม่มีรหัสผ่านให้ขโมย</p>
+          <div class="node-tag tag-server">✅ ฐานข้อมูลรั่วก็ปลอดภัย</div>
         </div>
       </div>
 
       <!-- Highlighted Quote Box -->
       <div class="quote-box" style="margin-top: 14px; text-align: center; border-color: rgba(0, 212, 255, 0.45); background: linear-gradient(90deg, rgba(0,255,136,0.08) 0%, rgba(0,212,255,0.12) 50%, rgba(168,85,247,0.08) 100%); padding: 12px 16px;">
         <div class="quote-text" style="font-size: 1.02rem; font-weight: 800; color: #ffffff; line-height: 1.5;">
-          "ต้นทางไม่มีรหัสผ่านให้หลุด <span class="cyan">—</span> ตรงกลางล็อกส่งเฉพาะเว็บจริง <span class="cyan">—</span> ปลายทางไม่มีรหัสผ่านให้แฮก"
+          "ฝั่งเราไม่มีรหัสให้หลุด <span class="cyan">—</span> ระหว่างทางเว็บปลอมหลอกไม่ได้ <span class="cyan">—</span> ฝั่งเว็บไม่มีรหัสให้แฮก"
         </div>
       </div>
 
-      <!-- Supported Tools Compact Bar -->
+      <!-- Supported Tools Compact Bar (Summary Action) -->
       <div style="display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 12px; flex-wrap: wrap;">
         <div style="display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.05); border: 1px solid rgba(0,212,255,0.3); padding: 4px 12px; border-radius: 100px; font-size: 0.74rem; font-weight: 700; color: #e2e8f0;">
-          <img src="assets/windows_hello.jpg" alt="Windows Hello" style="width:16px;height:16px;border-radius:3px;background:#fff;padding:1px;object-fit:contain;"/> Windows Hello (TPM 2.0)
+          <img src="assets/windows_hello.jpg" alt="Windows Hello" style="width:16px;height:16px;border-radius:3px;background:#fff;padding:1px;object-fit:contain;"/> Windows Hello: เร็วสุด เครื่องเดียว
         </div>
         <div style="display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.05); border: 1px solid rgba(59,130,246,0.4); padding: 4px 12px; border-radius: 100px; font-size: 0.74rem; font-weight: 700; color: #e2e8f0;">
-          <img src="assets/bitwarden.png" alt="Bitwarden" style="width:16px;height:16px;border-radius:3px;background:#fff;padding:1px;object-fit:contain;"/> Bitwarden (Cloud E2EE)
+          <img src="assets/bitwarden.png" alt="Bitwarden" style="width:16px;height:16px;border-radius:3px;background:#fff;padding:1px;object-fit:contain;"/> Bitwarden: สะดวก ซิงค์หลายเครื่อง
         </div>
         <div style="display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.05); border: 1px solid rgba(0,255,136,0.3); padding: 4px 12px; border-radius: 100px; font-size: 0.74rem; font-weight: 700; color: #e2e8f0;">
-          <img src="assets/keepassxc.jpg" alt="KeePassXC" style="width:16px;height:16px;border-radius:3px;background:#fff;padding:1px;object-fit:contain;"/> KeePassXC (Offline 100%)
+          <img src="assets/keepassxc.jpg" alt="KeePassXC" style="width:16px;height:16px;border-radius:3px;background:#fff;padding:1px;object-fit:contain;"/> KeePassXC: ปลอดภัยสูงสุด ออฟไลน์
         </div>
       </div>
     </div>
