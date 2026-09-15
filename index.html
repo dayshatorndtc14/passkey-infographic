@@ -285,24 +285,33 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
-      margin-top: 18px;
+      gap: 14px;
+      margin-top: 20px;
       flex-wrap: wrap;
     }
     .logo-pill {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       border: 1.5px solid var(--border);
       border-radius: 100px;
       padding: 6px 18px;
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       font-weight: 700;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
       transition: transform 0.2s, background 0.2s;
     }
     .logo-pill:hover { transform: translateY(-2px); }
-    .logo-pill svg { flex-shrink: 0; }
+    .logo-img {
+      width: 26px;
+      height: 26px;
+      object-fit: contain;
+      border-radius: 6px;
+      background: #ffffff;
+      padding: 2px;
+      flex-shrink: 0;
+      display: block;
+    }
     .logo-pill.win { border-color: rgba(0, 212, 255, 0.45); color: #00d4ff; background: rgba(0, 212, 255, 0.1); }
     .logo-pill.bit { border-color: rgba(59, 130, 246, 0.5); color: #60a5fa; background: rgba(59, 130, 246, 0.12); }
     .logo-pill.kee { border-color: rgba(0, 255, 136, 0.45); color: #00ff88; background: rgba(0, 255, 136, 0.1); }
@@ -547,24 +556,17 @@
       <!-- 3 Products Logos -->
       <div class="hero-logos">
         <div class="logo-pill win" title="Windows Hello">
-          <svg width="20" height="20" viewBox="0 0 88 88" fill="currentColor">
-            <path d="M0 12.402l35.687-4.86.016 34.423-35.67.203zm35.67 33.529l.028 34.453L.028 75.48.016 45.728zm4.326-39.027L87.914 0v41.527l-47.918.378zm47.918 43.195l-.014 41.901-47.89-6.742V46.06z"/>
-          </svg>
+          <img src="assets/windows_hello.jpg" alt="Windows Hello" class="logo-img"/>
           <span>Windows Hello</span>
         </div>
 
         <div class="logo-pill bit" title="Bitwarden">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 1.75L3.5 5.5v6.2c0 5.2 3.6 10.1 8.5 11.3 4.9-1.2 8.5-6.1 8.5-11.3V5.5L12 1.75zm0 2.22l6.5 2.87v4.86c0 4.1-2.7 8-6.5 9.1-3.8-1.1-6.5-5-6.5-9.1V6.84L12 3.97z"/>
-            <path d="M12 7.2a2 2 0 100 4 2 2 0 000-4zm-1.2 4.8h2.4v3.5h-2.4z"/>
-          </svg>
+          <img src="assets/bitwarden.png" alt="Bitwarden" class="logo-img"/>
           <span>Bitwarden</span>
         </div>
 
         <div class="logo-pill kee" title="KeePassXC">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2C8.69 2 6 4.69 6 8v3H5c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-8c0-1.1-.9-2-2-2h-1V8c0-3.31-2.69-6-6-6zm0 2c2.21 0 4 1.79 4 4v3H8V8c0-2.21 1.79-4 4-4zm0 10c1.1 0 2 .9 2 2 0 .74-.4 1.39-1 1.73V19h-2v-1.27c-.6-.34-1-.99-1-1.73 0-1.1.9-2 2-2z"/>
-          </svg>
+          <img src="assets/keepassxc.jpg" alt="KeePassXC" class="logo-img"/>
           <span>KeePassXC</span>
         </div>
       </div>
@@ -609,7 +611,7 @@
       <div class="grid-3">
         <div class="tool-card">
           <div>
-            <div class="tool-icon">🪟</div>
+            <div class="tool-icon"><img src="assets/windows_hello.jpg" alt="Windows Hello" style="width:46px;height:46px;border-radius:12px;object-fit:contain;background:#fff;padding:3px;box-shadow:0 4px 12px rgba(0,0,0,0.3);margin-bottom:6px;"/></div>
             <span class="tool-tag tag-blue">OS Native / TPM 2.0</span>
             <h3>Windows Hello</h3>
             <p>ติดมากับ Windows 11 สแกนหน้า/นิ้ว/PIN ผูกกับฮาร์ดแวร์ ปลอดภัยระดับชิป</p>
@@ -619,7 +621,7 @@
 
         <div class="tool-card highlight">
           <div>
-            <div class="tool-icon">☁️</div>
+            <div class="tool-icon"><img src="assets/bitwarden.png" alt="Bitwarden" style="width:46px;height:46px;border-radius:12px;object-fit:contain;background:#fff;padding:3px;box-shadow:0 4px 12px rgba(0,0,0,0.3);margin-bottom:6px;"/></div>
             <span class="tool-tag tag-green">Cloud Sync / Multi-Device</span>
             <h3>Bitwarden</h3>
             <p>Password Manager ยอดนิยม ซิงค์ Passkeys ข้ามทุกเครื่อง (PC, Mac, iPhone, Android) แบบ E2EE</p>
@@ -629,7 +631,7 @@
 
         <div class="tool-card">
           <div>
-            <div class="tool-icon">🛡️</div>
+            <div class="tool-icon"><img src="assets/keepassxc.jpg" alt="KeePassXC" style="width:46px;height:46px;border-radius:12px;object-fit:contain;background:#fff;padding:3px;box-shadow:0 4px 12px rgba(0,0,0,0.3);margin-bottom:6px;"/></div>
             <span class="tool-tag tag-yellow">100% Offline / Local</span>
             <h3>KeePassXC</h3>
             <p>Open-Source ฐานข้อมูล .kdbx ในเครื่องตัวเอง ไม่ออกเน็ต ไม่พึ่งพาคลาวด์ใดๆ</p>
@@ -786,16 +788,22 @@
       
       <div class="grid-3" style="margin-top: 14px; text-align: left;">
         <div class="tool-card" style="padding: 14px 16px;">
-          <h3 style="font-size: 1rem; color: var(--cyan);">🪟 Windows Hello</h3>
-          <p style="font-size: 0.82rem;">สะดวก รวดเร็ว ผูกกับชิป TPM ในเครื่อง เหมาะกับการใช้งานประจำวัน</p>
+          <h3 style="font-size: 1rem; color: var(--cyan); display: flex; align-items: center; gap: 8px;">
+            <img src="assets/windows_hello.jpg" alt="Windows Hello" style="width:20px;height:20px;border-radius:4px;background:#fff;padding:1px;object-fit:contain;"/> Windows Hello
+          </h3>
+          <p style="font-size: 0.82rem; margin-top: 6px;">สะดวก รวดเร็ว ผูกกับชิป TPM ในเครื่อง เหมาะกับการใช้งานประจำวัน</p>
         </div>
         <div class="tool-card" style="padding: 14px 16px;">
-          <h3 style="font-size: 1rem; color: var(--green);">☁️ Bitwarden</h3>
-          <p style="font-size: 0.82rem;">คล่องตัว ซิงค์ข้ามทุกอุปกรณ์แบบ E2EE เหมาะกับคนใช้หลาย OS</p>
+          <h3 style="font-size: 1rem; color: var(--green); display: flex; align-items: center; gap: 8px;">
+            <img src="assets/bitwarden.png" alt="Bitwarden" style="width:20px;height:20px;border-radius:4px;background:#fff;padding:1px;object-fit:contain;"/> Bitwarden
+          </h3>
+          <p style="font-size: 0.82rem; margin-top: 6px;">คล่องตัว ซิงค์ข้ามทุกอุปกรณ์แบบ E2EE เหมาะกับคนใช้หลาย OS</p>
         </div>
         <div class="tool-card" style="padding: 14px 16px;">
-          <h3 style="font-size: 1rem; color: var(--yellow);">🛡️ KeePassXC</h3>
-          <p style="font-size: 0.82rem;">ออฟไลน์ 100% ไม่พึ่งพาคลาวด์ เหมาะกับเซิร์ฟเวอร์และข้อมูลลับสูง</p>
+          <h3 style="font-size: 1rem; color: var(--yellow); display: flex; align-items: center; gap: 8px;">
+            <img src="assets/keepassxc.jpg" alt="KeePassXC" style="width:20px;height:20px;border-radius:4px;background:#fff;padding:1px;object-fit:contain;"/> KeePassXC
+          </h3>
+          <p style="font-size: 0.82rem; margin-top: 6px;">ออฟไลน์ 100% ไม่พึ่งพาคลาวด์ เหมาะกับเซิร์ฟเวอร์และข้อมูลลับสูง</p>
         </div>
       </div>
 
