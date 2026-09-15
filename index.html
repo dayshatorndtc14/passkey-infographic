@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Data > AI — บทเรียนจาก Palantir</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700;800&family=Inter:wght@400;700;900&display=swap');
+
+    :root {
+      --bg:    #060e1f;
+      --bg2:   #0d1f3c;
+      --cyan:  #00d4ff;
+      --green: #00ff88;
+      --red:   #ff4757;
+      --white: #ffffff;
+      --gray:  #8892a4;
+      --card:  rgba(255,255,255,0.04);
+      --border:rgba(0,212,255,0.18);
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+    html, body {
+      width:100%; height:100%;
+      overflow:hidden;
+      background:var(--bg);
+      color:var(--white);
+      font-family:'Sarabun','Inter',sans-serif;
+    }
+
+    /* ── SLIDER WRAPPER ── */
+    .slider-track {
+      display:flex;
+      width:100%;
+      height:100vh;
+      transition: transform 0.55s cubic-bezier(0.77,0,0.18,1);
+    }
+
+    /* ── EACH SLIDE ── */
+    .slide {
+      min-width:100vw;
+      height:100vh;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      padding:48px 32px;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+
+    /* bg glow per slide */
+    .slide::before {
+      content:'';
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+    }
+    .slide-1::before { background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(0,212,255,.13) 0%,transparent 70%); }
+    .slide-2::before { background:radial-gradient(ellipse 60% 50% at 30% 50%,rgba(0,212,255,.09) 0%,transparent 70%); }
+    .slide-3::before { background:radial-gradient(ellipse 70% 50% at 70% 50%,rgba(255,71,87,.08) 0%,transparent 70%); }
+    .slide-4::before { background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(0,212,255,.07) 0%,transparent 70%); }
+    .slide-5::before { background:radial-gradient(ellipse 70% 60% at 20% 50%,rgba(0,212,255,.1) 0%,transparent 70%); }
+    .slide-6::before { background:radial-gradient(ellipse 60% 50% at 80% 50%,rgba(0,255,136,.08) 0%,transparent 70%); }
+    .slide-7::before { background:radial-gradient(ellipse 60% 50% at 50% 30%,rgba(0,212,255,.09) 0%,transparent 70%); }
+    .slide-8::before { background:radial-gradient(ellipse 70% 60% at 50% 100%,rgba(0,212,255,.13) 0%,transparent 70%); }
+
+    /* dot grid texture */
+    .slide::after {
+      content:'';
+      position:absolute;
+      inset:0;
+      background-image:radial-gradient(rgba(0,212,255,.06) 1px,transparent 1px);
+      background-size:32px 32px;
+      pointer-events:none;
+    }
+
+    .slide-inner { position:relative; z-index:1; max-width:860px; width:100%; }
+
+    /* ── TYPOGRAPHY ── */
+    .badge {
+      display:inline-flex; align-items:center; gap:8px;
+      background:rgba(0,212,255,.1); border:1px solid var(--border);
+      border-radius:100px; padding:5px 16px; font-size:12px;
+      color:var(--cyan); margin-bottom:22px;
+    }
+    .badge-dot { width:7px; height:7px; background:var(--cyan); border-radius:50%; animation:pulse 1.5s infinite; }
+
+    .label {
+      font-size:11px; font-weight:700; letter-spacing:3px;
+      text-transform:uppercase; color:var(--cyan); margin-bottom:10px;
+    }
+    h1 { font-size:clamp(2rem,5.5vw,4rem); font-weight:900; line-height:1.15; }
+    h2 { font-size:clamp(1.5rem,4vw,2.8rem); font-weight:800; line-height:1.2; }
+    h3 { font-size:clamp(1rem,2.5vw,1.4rem); font-weight:700; }
+    .cyan  { color:var(--cyan); }
+    .green { color:var(--green); }
+    .red   { color:var(--red); }
+    .gray  { color:var(--gray); }
+    .sub   { color:var(--gray); font-size:clamp(.9rem,1.8vw,1.1rem); line-height:1.7; margin-top:14px; }
+
+    /* ── FORMULA ── */
+    .formula-box {
+      background:rgba(0,212,255,.06); border:1px solid var(--border);
+      border-radius:20px; padding:36px 40px; margin-top:28px; text-align:center;
+    }
+    .formula-big { font-size:clamp(2rem,6vw,4.5rem); font-weight:900; line-height:1; }
+    .bar-row { display:flex; gap:12px; margin-top:24px; }
+    .bar { border-radius:12px; padding:18px 14px; text-align:center; }
+    .bar.data { background:rgba(0,212,255,.12); border:1px solid rgba(0,212,255,.35); flex:4; }
+    .bar.ai   { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.12); flex:1; }
+    .bar-num  { font-size:1.9rem; font-weight:900; }
+    .bar.data .bar-num { color:var(--cyan); }
+    .bar.ai   .bar-num { color:var(--gray); }
+    .bar-lbl  { font-size:.8rem; color:var(--gray); margin-top:4px; }
+
+    /* ── FAIL CARDS ── */
+    .fail-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:28px; text-align:left; }
+    .fail-card {
+      background:rgba(255,71,87,.06); border:1px solid rgba(255,71,87,.22);
+      border-radius:16px; padding:24px; position:relative; overflow:hidden;
+    }
+    .fail-card::before { content:'✕'; position:absolute; top:-8px; right:14px; font-size:4.5rem; font-weight:900; color:rgba(255,71,87,.08); line-height:1; }
+    .fail-tag { display:inline-block; background:rgba(255,71,87,.15); color:var(--red); border-radius:6px; padding:2px 10px; font-size:11px; font-weight:700; margin-bottom:10px; }
+    .fail-card h3 { font-size:1rem; margin-bottom:6px; }
+    .fail-card p  { font-size:.83rem; color:var(--gray); line-height:1.6; }
+    .fail-amt { margin-top:12px; font-size:1.4rem; font-weight:900; color:var(--red); }
+    .fail-amt span { font-size:.75rem; font-weight:400; color:var(--gray); display:block; }
+
+    /* ── TABLE ── */
+    .tbl-wrap { overflow-x:auto; margin-top:28px; text-align:left; }
+    table { width:100%; border-collapse:collapse; }
+    th { background:rgba(0,212,255,.08); padding:12px 16px; font-size:.75rem; letter-spacing:1px; text-transform:uppercase; color:var(--cyan); border-bottom:1px solid var(--border); }
+    td { padding:11px 16px; font-size:.85rem; border-bottom:1px solid rgba(255,255,255,.04); color:var(--gray); vertical-align:top; }
+    td:first-child { color:var(--white); font-weight:600; }
+    tr.palantir-row td { background:rgba(0,212,255,.04); }
+    .tag-good { color:var(--green); font-weight:700; }
+    .tag-bad  { color:var(--red);   font-weight:700; }
+
+    /* ── TIMELINE ── */
+    .timeline { text-align:left; margin-top:28px; padding-left:28px; position:relative; }
+    .timeline::before { content:''; position:absolute; left:5px; top:8px; bottom:8px; width:2px; background:linear-gradient(to bottom,var(--cyan),rgba(0,212,255,.1)); }
+    .tl-item { position:relative; margin-bottom:28px; }
+    .tl-item::before { content:''; position:absolute; left:-26px; top:6px; width:10px; height:10px; background:var(--cyan); border-radius:50%; box-shadow:0 0 10px var(--cyan); }
+    .tl-year  { font-size:11px; color:var(--cyan); font-weight:700; letter-spacing:2px; margin-bottom:4px; }
+    .tl-title { font-size:.95rem; font-weight:700; margin-bottom:3px; }
+    .tl-desc  { font-size:.82rem; color:var(--gray); line-height:1.6; }
+
+    /* ── STATS ── */
+    .stats-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:28px; }
+    .stat-card { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:24px 14px; text-align:center; }
+    .stat-num { font-size:clamp(1.6rem,4vw,2.6rem); font-weight:900; color:var(--cyan); line-height:1; }
+    .stat-lbl { font-size:.78rem; color:var(--gray); margin-top:8px; line-height:1.4; }
+
+    /* ── CLIENTS ── */
+    .client-grid { display:grid; grid-template-columns:repeat(6,1fr); gap:12px; margin-top:28px; }
+    .client-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:18px 10px; text-align:center; }
+    .client-card .em { font-size:1.6rem; }
+    .client-card .nm { font-size:.75rem; font-weight:700; margin-top:6px; }
+    .client-card .rl { font-size:.68rem; color:var(--gray); margin-top:2px; }
+
+    /* ── QUOTE ── */
+    .quote-box { border-left:3px solid var(--cyan); background:rgba(0,212,255,.05); border-radius:0 14px 14px 0; padding:22px 28px; margin-top:24px; text-align:left; }
+    .quote-text { font-size:clamp(1rem,2.5vw,1.4rem); font-weight:700; line-height:1.5; }
+    .quote-auth { color:var(--gray); font-size:.82rem; margin-top:10px; }
+
+    /* ── PUNCHLINE ── */
+    .punchline {
+      display:inline-block; margin-top:32px;
+      font-size:clamp(1rem,3vw,1.6rem); font-weight:700;
+      color:var(--cyan); padding:14px 36px;
+      border:1px solid var(--border); border-radius:100px;
+      background:rgba(0,212,255,.06);
+      animation:glow 2s infinite alternate;
+    }
+    .hashtags { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:24px; }
+    .hashtag  { background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1); border-radius:100px; padding:5px 14px; font-size:12px; color:var(--gray); }
+
+    /* ── NAV ARROWS ── */
+    .nav-btn {
+      position:fixed; top:50%; transform:translateY(-50%);
+      width:52px; height:52px; border-radius:50%;
+      background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.15);
+      color:var(--white); font-size:1.3rem; cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
+      transition:background .25s, border-color .25s, transform .25s;
+      z-index:1000; backdrop-filter:blur(10px);
+      user-select:none;
+    }
+    .nav-btn:hover { background:rgba(0,212,255,.2); border-color:var(--cyan); transform:translateY(-50%) scale(1.1); }
+    .nav-btn:active { transform:translateY(-50%) scale(.95); }
+    .nav-btn.disabled { opacity:.25; pointer-events:none; }
+    #btn-prev { left:20px; }
+    #btn-next { right:20px; }
+
+    /* ── SLIDE COUNTER ── */
+    .counter {
+      position:fixed; bottom:28px; left:50%; transform:translateX(-50%);
+      z-index:1000; display:flex; align-items:center; gap:10px;
+    }
+    .dot {
+      width:8px; height:8px; border-radius:50%;
+      background:rgba(255,255,255,.2); transition:all .3s;
+      cursor:pointer;
+    }
+    .dot.active { background:var(--cyan); box-shadow:0 0 8px var(--cyan); width:24px; border-radius:4px; }
+
+    /* ── SLIDE NUMBER ── */
+    .slide-num {
+      position:fixed; bottom:28px; right:28px;
+      font-size:12px; color:var(--gray); z-index:1000;
+      font-weight:600; letter-spacing:1px;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+    @keyframes glow  { from{box-shadow:0 0 10px rgba(0,212,255,.2)} to{box-shadow:0 0 28px rgba(0,212,255,.5)} }
+
+    /* ── SLIDE ENTER ANIMATION ── */
+    .slide.active .slide-inner > * {
+      animation: slideUp .5s ease both;
+    }
+    .slide.active .slide-inner > *:nth-child(1) { animation-delay:.05s; }
+    .slide.active .slide-inner > *:nth-child(2) { animation-delay:.12s; }
+    .slide.active .slide-inner > *:nth-child(3) { animation-delay:.19s; }
+    .slide.active .slide-inner > *:nth-child(4) { animation-delay:.26s; }
+    .slide.active .slide-inner > *:nth-child(5) { animation-delay:.33s; }
+
+    @keyframes slideUp {
+      from { opacity:0; transform:translateY(22px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width:640px) {
+      .fail-grid    { grid-template-columns:1fr; }
+      .stats-grid   { grid-template-columns:repeat(2,1fr); }
+      .client-grid  { grid-template-columns:repeat(3,1fr); }
+      table thead   { display:none; }
+      table td      { display:block; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── SLIDE TRACK ── -->
+<div class="slider-track" id="track">
+
+  <!-- ═══ SLIDE 1 — HERO ═══ -->
+  <div class="slide slide-1 active">
+    <div class="slide-inner">
+      <div class="badge"><span class="badge-dot"></span> IT Morning Brief • Sep 2026</div>
+      <h1>AI เก่งแค่ไหน<br/>ก็แพ้ <span class="cyan">Data ที่ดีกว่า</span></h1>
+      <p class="sub">และทำไม Palantir ถึงชนะเกม AI<br/>โดยที่ไม่ได้สร้าง AI เก่งที่สุด</p>
+      <p style="margin-top:40px;font-size:.85rem;color:var(--gray);">👉 กดลูกศรขวาเพื่อเริ่มต้น</p>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 2 — FORMULA ═══ -->
+  <div class="slide slide-2">
+    <div class="slide-inner">
+      <div class="label">The Core Concept</div>
+      <h2>สูตรที่ไม่มีใครบอกคุณ</h2>
+      <p class="sub">ทุกคนแข่งสร้าง AI เก่งขึ้น แต่ AI เป็นเพียง 20% ของสมการ</p>
+      <div class="formula-box">
+        <div class="formula-big"><span class="cyan">Data ดี</span> &gt; AI เก่ง</div>
+        <div style="color:var(--gray);font-size:.9rem;margin-top:12px;">ของที่ทำให้ AI ได้ผลจริงในโลกความเป็นจริง</div>
+        <div class="bar-row">
+          <div class="bar data"><div class="bar-num">80%</div><div class="bar-lbl">Data — คุณภาพ ความสะอาด การเชื่อมต่อ</div></div>
+          <div class="bar ai"><div class="bar-num">20%</div><div class="bar-lbl">AI Model</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 3 — FAILURES ═══ -->
+  <div class="slide slide-3">
+    <div class="slide-inner">
+      <div class="label">Case Studies</div>
+      <h2>เมื่อ <span class="red">AI เก่ง</span> เจอ <span class="red">Data ห่วย</span></h2>
+      <p class="sub">สองเรื่องจริงที่พิสูจน์ว่า Model เก่งแค่ไหนก็ช่วยไม่ได้ถ้า Data พัง</p>
+      <div class="fail-grid">
+        <div class="fail-card">
+          <div class="fail-tag">FAILED 2022</div>
+          <h3>IBM Watson Health</h3>
+          <p>ทุ่มเงินมหาศาลพัฒนา AI รักษามะเร็ง แต่ข้อมูลโรงพยาบาลแต่ละแห่ง format ไม่เหมือนกัน เชื่อมกันไม่ได้ หมออาวุโสบอกว่าคำแนะนำของ AI "อันตราย"</p>
+          <div class="fail-amt">$4,000M <span>เงินที่สูญเสียไป</span></div>
+        </div>
+        <div class="fail-card">
+          <div class="fail-tag">CANCELLED 2018</div>
+          <h3>Amazon AI คัดเลือกพนักงาน</h3>
+          <p>AI คัด Resume จาก Training Data 10 ปีที่แล้ว (ส่วนใหญ่เป็นผู้ชาย) AI เรียนรู้ว่า "ผู้หญิง = ไม่ผ่าน" โดยอัตโนมัติ</p>
+          <div class="fail-amt">ยกเลิก <span>หลังถูกตรวจพบ bias</span></div>
+        </div>
+      </div>
+      <div class="quote-box">
+        <div class="quote-text">"ทั้งสองบริษัทมี AI เก่งมาก แต่ Data ที่ให้มันเรียน... พัง"</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 4 — COMPARE ═══ -->
+  <div class="slide slide-4">
+    <div class="slide-inner">
+      <div class="label">Comparison</div>
+      <h2>AI บริษัทต่างๆ <span class="gray">vs</span> <span class="cyan">Palantir</span></h2>
+      <p class="sub">เปรียบเทียบแนวทางและผลลัพธ์ที่เกิดขึ้นจริง</p>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>บริษัท</th><th>จุดแข็ง</th><th>ปัญหา</th><th>ผลลัพธ์</th></tr></thead>
+          <tbody>
+            <tr><td>OpenAI / ChatGPT</td><td>Model เก่งที่สุด</td><td>Data องค์กรออกนอกบริษัท</td><td class="tag-bad">Enterprise adoption ช้า</td></tr>
+            <tr><td>Google Gemini</td><td>Model ขนาดใหญ่</td><td>Privacy concerns</td><td class="tag-bad">ข้อกังวล Security</td></tr>
+            <tr><td>IBM Watson</td><td>Brand น่าเชื่อถือ</td><td>Data โรงพยาบาลยุ่งเหยิง</td><td class="tag-bad">ปิดตัว 2022</td></tr>
+            <tr class="palantir-row"><td>✦ Palantir</td><td>Data ดีที่สุด 20 ปี</td><td>Model ไม่ได้เก่งที่สุด</td><td class="tag-good">+340% — #1 S&P500</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 5 — PALANTIR STORY ═══ -->
+  <div class="slide slide-5">
+    <div class="slide-inner">
+      <div class="label">The Quiet Winner</div>
+      <h2><span class="cyan">Palantir</span> — เงียบที่สุด แต่ชนะที่สุด</h2>
+      <p class="sub">ชื่อมาจากหินวิเศษใน Lord of the Rings ที่ใช้ "มองเห็นทุกอย่าง"</p>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-year">2003</div>
+          <div class="tl-title">ก่อตั้งโดย Peter Thiel (ผู้ร่วมก่อตั้ง PayPal)</div>
+          <div class="tl-desc">เริ่มจากคำถามเดียว: "จะเชื่อมข้อมูลรัฐที่กระจัดกระจายได้อย่างไร?"</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2003 – 2022</div>
+          <div class="tl-title">20 ปีแห่งการสร้าง Data Infrastructure</div>
+          <div class="tl-desc">ฝังตัวอยู่กับ CIA, FBI, NSA, NATO — เก็บ Data จริง จัดระเบียบจริง ทดสอบในสนามรบจริง</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2023</div>
+          <div class="tl-title">เปิดตัว AIP (Artificial Intelligence Platform)</div>
+          <div class="tl-desc">นำ LLM (OpenAI, Anthropic, Google ฯลฯ) มาวางบน Data 20 ปี — ข้อมูลไม่ออกนอกองค์กร รัฐบาลจึงใช้ได้</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2024</div>
+          <div class="tl-title">ผลลัพธ์ปรากฏ</div>
+          <div class="tl-desc">ติด S&P 500 (ก.ย.) และ Nasdaq-100 (ธ.ค.) หุ้นบวก +340% กลายเป็น #1 ของ S&P 500</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 6 — STATS ═══ -->
+  <div class="slide slide-6">
+    <div class="slide-inner">
+      <div class="label">Numbers Don't Lie</div>
+      <h2>ตัวเลขที่พูดแทน<span class="cyan">ทุกอย่าง</span></h2>
+      <p class="sub">ผลลัพธ์ปี 2024 ที่ไม่มีใครคาดคิด</p>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-num">+340%</div><div class="stat-lbl">ผลตอบแทนหุ้นปี 2024<br/>อันดับ 1 ใน S&P 500</div></div>
+        <div class="stat-card"><div class="stat-num">$2.87B</div><div class="stat-lbl">Revenue ปี 2024<br/>(+29% YoY)</div></div>
+        <div class="stat-card"><div class="stat-num">+54%</div><div class="stat-lbl">US Commercial<br/>Revenue Growth</div></div>
+        <div class="stat-card"><div class="stat-num">20 ปี</div><div class="stat-lbl">สะสม Data ก่อนใคร<br/>จะรู้จัก AI</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 7 — CLIENTS ═══ -->
+  <div class="slide slide-7">
+    <div class="slide-inner">
+      <div class="label">Real Clients</div>
+      <h2>ใครใช้ <span class="cyan">Palantir</span> บ้าง?</h2>
+      <p class="sub">ลูกค้าที่ไม่ใช้ถ้าของไม่จริง</p>
+      <div class="client-grid">
+        <div class="client-card"><div class="em">🇺🇸</div><div class="nm">CIA / FBI / NSA</div><div class="rl">Intelligence</div></div>
+        <div class="client-card"><div class="em">🪖</div><div class="nm">US Army</div><div class="rl">Battlefield AI</div></div>
+        <div class="client-card"><div class="em">🌍</div><div class="nm">NATO</div><div class="rl">Allied Defense</div></div>
+        <div class="client-card"><div class="em">🏥</div><div class="nm">NHS อังกฤษ</div><div class="rl">Healthcare Data</div></div>
+        <div class="client-card"><div class="em">🇺🇦</div><div class="nm">Ukraine</div><div class="rl">War Analytics</div></div>
+        <div class="client-card"><div class="em">🏭</div><div class="nm">Airbus / Ferrari</div><div class="rl">Manufacturing</div></div>
+      </div>
+      <div class="quote-box" style="margin-top:24px;">
+        <div class="quote-text">AIP Bootcamp — ลูกค้ามาแค่ 5 วัน แล้วกลับพร้อม AI Solution ที่ใช้งานได้จริง</div>
+        <div class="quote-auth">— กลยุทธ์ขายที่ทำให้ปิดดีลได้เกือบทุกครั้ง</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 8 — CLOSING ═══ -->
+  <div class="slide slide-8">
+    <div class="slide-inner">
+      <div class="label">Bottom Line</div>
+      <h2>ไม่ใช่ใครสร้าง <span class="cyan">AI เก่งที่สุด</span> ที่ชนะ<br/>แต่คือใครมี <span class="green">Data ดีที่สุด</span></h2>
+      <p class="sub">Palantir ใช้เวลา 20 ปีสร้างสิ่งที่ไม่มีใครสนใจ<br/>แต่เป็นสิ่งที่ AI ต้องการมากที่สุด</p>
+      <div class="punchline">ไหนใครซื้อ Palantir ไว้บ้างนะครับ 😄</div>
+      <div class="hashtags">
+        <span class="hashtag">#Palantir</span>
+        <span class="hashtag">#AI</span>
+        <span class="hashtag">#DataScience</span>
+        <span class="hashtag">#ITNews</span>
+        <span class="hashtag">#MorningBrief</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end track -->
+
+<!-- ── ARROWS ── -->
+<button class="nav-btn disabled" id="btn-prev" onclick="go(-1)">&#8592;</button>
+<button class="nav-btn" id="btn-next" onclick="go(1)">&#8594;</button>
+
+<!-- ── DOTS ── -->
+<div class="counter" id="dots"></div>
+
+<!-- ── SLIDE NUMBER ── -->
+<div class="slide-num" id="slideNum"></div>
+
+<script>
+  const TOTAL  = 8;
+  let current  = 0;
+  const track  = document.getElementById('track');
+  const slides = document.querySelectorAll('.slide');
+  const dotsEl = document.getElementById('dots');
+  const numEl  = document.getElementById('slideNum');
+  const prev   = document.getElementById('btn-prev');
+  const next   = document.getElementById('btn-next');
+
+  // Build dots
+  for (let i = 0; i < TOTAL; i++) {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => goTo(i);
+    dotsEl.appendChild(d);
+  }
+
+  function goTo(n) {
+    slides[current].classList.remove('active');
+    current = Math.max(0, Math.min(TOTAL - 1, n));
+    track.style.transform = `translateX(-${current * 100}vw)`;
+    slides[current].classList.add('active');
+    // dots
+    document.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('active', i === current));
+    // buttons
+    prev.classList.toggle('disabled', current === 0);
+    next.classList.toggle('disabled', current === TOTAL - 1);
+    // counter
+    numEl.textContent = `${current + 1} / ${TOTAL}`;
+  }
+
+  function go(dir) { goTo(current + dir); }
+
+  // Keyboard
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown')  go(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')    go(-1);
+  });
+
+  // Touch / Swipe
+  let startX = 0;
+  document.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive:true });
+  document.addEventListener('touchend',   e => {
+    const dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 50) go(dx < 0 ? 1 : -1);
+  });
+
+  goTo(0);
+</script>
+</body>
+</html>
