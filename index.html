@@ -1014,14 +1014,14 @@
         <div class="tool-card" style="text-align: left; padding: clamp(12px, 1.6vh, 16px) clamp(10px, 1.2vw, 14px);">
           <div>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-              <div class="tool-icon" style="margin: 0; font-size: 1.6rem;">📱</div>
-              <span class="tool-tag tag-blue" style="margin: 0;">🔑 ปั๊มกุญแจสำรอง</span>
+              <div class="tool-icon" style="margin: 0; font-size: 1.6rem;">🔑</div>
+              <span class="tool-tag tag-blue" style="margin: 0;">📱 กุญแจดอกที่ 2</span>
             </div>
-            <h3 style="color: var(--cyan); margin-bottom: 6px;">1. ผูกอุปกรณ์สำรอง</h3>
+            <h3 style="color: var(--cyan); margin-bottom: 6px;">1. สร้าง Passkey ดอกที่ 2</h3>
             <p style="font-size: 0.78rem; line-height: 1.45; color: #cfd8e6;">
-              <strong style="color: var(--white);">• ปัญหา:</strong> คอมฯ ตกน้ำ เมนบอร์ดพัง ชิป TPM เสีย กุญแจในเครื่องจะหายทันที<br/>
-              <strong style="color: var(--cyan);">• วิธีแก้:</strong> ผูก Passkey ไว้ที่คอมฯ (ดอกที่ 1) + มือถือหรือ Bitwarden (ดอกที่ 2)<br/>
-              <strong style="color: var(--green);">• ผลลัพธ์:</strong> คอมพัง ยังใช้มือถือสแกน QR Code เข้าบัญชีได้ทันที
+              <strong style="color: var(--white);">• ปัญหา:</strong> TPM เป็น Device-Bound ผูกติดชิปเครื่องเดียว คอมพัง กุญแจหายถาวร<br/>
+              <strong style="color: var(--cyan);">• วิธีแก้:</strong> สร้าง Passkey อีกชุดไว้ใน Bitwarden, มือถือ หรือ FIDO2 Key สำรอง<br/>
+              <strong style="color: var(--green);">• ผลลัพธ์:</strong> คอมพังยังเข้าได้จากเครื่องอื่น (QR Code เป็นแค่รีโมต ไม่ใช่ Backup)
             </p>
           </div>
         </div>
@@ -1060,7 +1060,7 @@
       </div>
 
       <div class="slide-note">
-        <span class="note-title">💡 หัวใจสำคัญ:</span> <strong>Passkey</strong> ปลอดภัยจากแฮกเกอร์ 100% แต่เราต้องเตรียม <strong>"ทางเข้าสำรอง"</strong> เผื่อเราทำอุปกรณ์ตัวเองพังหรือสูญหาย
+        <span class="note-title">💡 หัวใจสำคัญ:</span> <strong>Passkey ใน TPM</strong> ผูกติดตายกับชิป กู้ไม่ได้ ทางแก้คือ <strong>สร้าง Passkey ดอกที่ 2</strong> ใน Bitwarden หรืออุปกรณ์อื่น — และ <strong>QR Code คือรีโมตล็อกอินชั่วคราว ไม่ใช่ตัว Backup</strong>
       </div>
     </div>
   </div>
