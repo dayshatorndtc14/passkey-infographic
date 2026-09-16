@@ -576,102 +576,6 @@
     }
 
     /* ═══════════════════════════════
-       HOUSE ANALOGY GRAPHIC (SLIDE 6)
-    ═══════════════════════════════ */
-    .house-analogy-box {
-      background: linear-gradient(180deg, rgba(0, 212, 255, 0.08) 0%, rgba(13, 31, 60, 0.6) 100%);
-      border: 1.5px solid rgba(0, 212, 255, 0.35);
-      border-radius: var(--radius);
-      padding: clamp(8px, 1.1vh, 10px) clamp(10px, 1.2vw, 14px);
-      margin-top: clamp(8px, 1vh, 10px);
-      text-align: center;
-      width: 100%;
-      box-sizing: border-box;
-    }
-    .analogy-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px dashed rgba(0, 212, 255, 0.25);
-      padding-bottom: 5px;
-      margin-bottom: 6px;
-      flex-wrap: wrap;
-      gap: 4px;
-    }
-    .analogy-title {
-      font-size: clamp(0.76rem, 1.05vw, 0.86rem);
-      font-weight: 800;
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .analogy-sub {
-      font-size: clamp(0.64rem, 0.85vw, 0.72rem);
-      color: var(--cyan);
-      font-weight: 700;
-      background: rgba(0, 212, 255, 0.12);
-      padding: 2px 8px;
-      border-radius: 100px;
-      border: 1px solid rgba(0, 212, 255, 0.3);
-    }
-    .analogy-keys {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: clamp(6px, 1vw, 10px);
-    }
-    @media (max-width: 600px) {
-      .analogy-keys { grid-template-columns: 1fr; }
-    }
-    .key-node {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1.5px solid rgba(255, 255, 255, 0.12);
-      border-radius: 10px;
-      padding: 6px 8px;
-      text-align: center;
-      transition: transform 0.2s;
-    }
-    .key-node:hover { transform: translateY(-2px); }
-    .key-node-tpm { border-color: rgba(255, 71, 87, 0.45); background: rgba(255, 71, 87, 0.07); }
-    .key-node-vault { border-color: rgba(0, 255, 136, 0.45); background: rgba(0, 255, 136, 0.07); }
-    .key-node-mobile { border-color: rgba(0, 212, 255, 0.45); background: rgba(0, 212, 255, 0.07); }
-
-    .key-tag {
-      font-size: clamp(0.62rem, 0.8vw, 0.68rem);
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 2px;
-    }
-    .key-node-tpm .key-tag { color: #ff6b81; }
-    .key-node-vault .key-tag { color: var(--green); }
-    .key-node-mobile .key-tag { color: var(--cyan); }
-
-    .key-title {
-      font-size: clamp(0.78rem, 1.1vw, 0.9rem);
-      font-weight: 800;
-      color: #ffffff;
-      margin-bottom: 3px;
-    }
-    .key-badge {
-      display: inline-block;
-      font-size: clamp(0.62rem, 0.85vw, 0.68rem);
-      font-weight: 800;
-      padding: 2px 6px;
-      border-radius: 5px;
-      margin-bottom: 3px;
-    }
-    .badge-status-dead { background: rgba(255, 71, 87, 0.25); color: #ff6b81; border: 1px solid rgba(255, 71, 87, 0.45); }
-    .badge-status-alive { background: rgba(0, 255, 136, 0.2); color: var(--green); border: 1px solid rgba(0, 255, 136, 0.4); }
-    .badge-status-cross { background: rgba(0, 212, 255, 0.2); color: var(--cyan); border: 1px solid rgba(0, 212, 255, 0.4); }
-
-    .key-desc {
-      font-size: clamp(0.62rem, 0.82vw, 0.7rem);
-      color: #cbd5e1;
-      line-height: 1.3;
-    }
-
-    /* ═══════════════════════════════
        SECURITY PIPELINE GRAPHIC (SLIDE 8)
     ═══════════════════════════════ */
     .sec-pipeline {
@@ -1103,92 +1007,60 @@
     <div class="slide-inner">
       <div class="label">Best Practices &amp; Safety Net</div>
       <h2>3 ข้อควรจำ <span class="cyan">ก่อนเริ่มใช้ Passkey</span></h2>
-      <p class="sub">เปรียบเหมือน "ประตูบ้านบานเดียว แต่มีกุญแจคนละดอก" — ไม่ใช่การเอากุญแจเดิมไปก๊อปปี้</p>
+      <p class="sub">Passkey ปลอดภัย 100% แต่ต้องรู้วิธีรับมือเมื่อ "คอมพังหรือมือถือหาย"</p>
 
-      <!-- HOUSE & MULTI-KEY ANALOGY DIAGRAM -->
-      <div class="house-analogy-box">
-        <div class="analogy-header">
-          <span class="analogy-title">🏠 1 บัญชีผู้ใช้ (เหมือนประตูบ้านบานเดียว)</span>
-          <span class="analogy-sub">เว็บไซต์เก็บ Public Key A, B, C แยกกัน</span>
-        </div>
-        <div class="analogy-keys">
-          <!-- Key A: TPM -->
-          <div class="key-node key-node-tpm">
-            <div class="key-tag">กุญแจ A: TPM ในเครื่อง</div>
-            <div class="key-title">Windows Hello</div>
-            <div class="key-badge badge-status-dead">❌ คอมพัง = ดอกนี้หายถาวร</div>
-            <div class="key-desc">ฝังในชิป (Hardware-Bound) ดูดออกไม่ได้</div>
-          </div>
-          <!-- Key B: Bitwarden -->
-          <div class="key-node key-node-vault">
-            <div class="key-tag">กุญแจ B: Cloud Vault</div>
-            <div class="key-title">Bitwarden</div>
-            <div class="key-badge badge-status-alive">✅ คอมพัง กุญแจยังอยู่</div>
-            <div class="key-desc">เข้ารหัส E2EE ล็อกอินเปิดจากเครื่องอื่นได้</div>
-          </div>
-          <!-- Key C: Smartphone -->
-          <div class="key-node key-node-mobile">
-            <div class="key-tag">กุญแจ C: มือถือ</div>
-            <div class="key-title">Smartphone</div>
-            <div class="key-badge badge-status-cross">📲 สแกน QR ช่วยเปิด</div>
-            <div class="key-desc">Cross-Device Auth ยืนยันให้คอมใหม่ได้</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 3 CARDS -->
-      <div class="grid-3" style="margin-top: 10px;">
+      <div class="grid-3" style="margin-top: 16px;">
         <!-- Card 1 -->
-        <div class="tool-card" style="text-align: left; padding: clamp(10px, 1.4vh, 14px) clamp(8px, 1vw, 12px);">
+        <div class="tool-card" style="text-align: left; padding: clamp(14px, 2vh, 20px) clamp(12px, 1.4vw, 18px);">
           <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-              <div class="tool-icon" style="margin: 0; font-size: 1.4rem;">🔑</div>
-              <span class="tool-tag tag-blue" style="margin: 0;">Multi-Passkey</span>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <div class="tool-icon" style="margin: 0; font-size: 1.8rem;">💻❌</div>
+              <span class="tool-tag tag-blue" style="margin: 0;">กุญแจดอกที่ 2</span>
             </div>
-            <h3 style="color: var(--cyan); margin-bottom: 4px; font-size: 0.95rem;">1. สร้างกุญแจดอกที่ 2</h3>
-            <p style="font-size: 0.74rem; line-height: 1.4; color: #cfd8e6;">
-              <strong style="color: var(--white);">• ข้อเท็จจริง:</strong> TPM กุญแจฝังตายกับชิป ก๊อปปี้ไม่ได้<br/>
-              <strong style="color: var(--cyan);">• วิธีแก้:</strong> สร้าง Passkey B ใน Bitwarden หรือ C ในมือถือเพิ่ม<br/>
-              <strong style="color: var(--green);">• ผลลัพธ์:</strong> คอมพัง ยังมีดอกอื่นไขเข้าบัญชีได้เสมอ
+            <h3 style="color: var(--cyan); margin-bottom: 8px; font-size: 1.12rem;">1. กุญแจในคอม "พังแล้วพังเลย"</h3>
+            <p style="font-size: 0.84rem; line-height: 1.55; color: #cfd8e6;">
+              <strong style="color: var(--white);">• ความจริง:</strong> Passkey ใน Windows Hello ฝังติดชิป TPM บนเมนบอร์ด คอมพังคือกุญแจหายถาวร ดึงออกไม่ได้<br/>
+              <strong style="color: var(--cyan);">• ทางแก้:</strong> ให้กดสร้าง Passkey <strong>ดอกที่ 2</strong> เก็บไว้ใน Bitwarden หรือมือถือสำรองไว้เสมอ
             </p>
           </div>
         </div>
 
         <!-- Card 2 -->
-        <div class="tool-card highlight" style="text-align: left; padding: clamp(10px, 1.4vh, 14px) clamp(8px, 1vw, 12px);">
+        <div class="tool-card highlight" style="text-align: left; padding: clamp(14px, 2vh, 20px) clamp(12px, 1.4vw, 18px);">
           <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-              <div class="tool-icon" style="margin: 0; font-size: 1.4rem;">📲</div>
-              <span class="tool-tag tag-yellow" style="margin: 0;">Cross-Device Auth</span>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <div class="tool-icon" style="margin: 0; font-size: 1.8rem;">📱⚡</div>
+              <span class="tool-tag tag-yellow" style="margin: 0;">ไม่ใช่ Backup</span>
             </div>
-            <h3 style="color: var(--yellow); margin-bottom: 4px; font-size: 0.95rem;">2. QR Code ≠ Backup</h3>
-            <p style="font-size: 0.74rem; line-height: 1.4; color: #cfd8e6;">
-              <strong style="color: var(--white);">• เข้าใจผิด:</strong> คิดว่าสแกน QR คือการดูดกุญแจจากคอมเก่า<br/>
-              <strong style="color: var(--yellow);">• ความจริง:</strong> QR Code คือมือถือเป็น "รีโมตช่วยล็อกอิน" ให้คอมใหม่<br/>
-              <strong style="color: var(--green);">• ผลลัพธ์:</strong> เข้าใจถูก ไม่ชะล่าใจ และเตรียม Vault สำรองไว้
+            <h3 style="color: var(--yellow); margin-bottom: 8px; font-size: 1.12rem;">2. QR Code "ไม่ใช่ตัวกู้คืน"</h3>
+            <p style="font-size: 0.84rem; line-height: 1.55; color: #cfd8e6;">
+              <strong style="color: var(--white);">• เข้าใจผิด:</strong> คิดว่าเอามือถือสแกน QR คือการดูดกุญแจจากคอมเก่ามาใส่<br/>
+              <strong style="color: var(--yellow);">• ความจริง:</strong> มือถือแค่ทำหน้าที่เป็น <strong>"รีโมตกดเปิดประตู"</strong> ให้คอมใหม่ชั่วคราว ไม่ได้กู้ไฟล์เดิมกลับมา
             </p>
           </div>
         </div>
 
         <!-- Card 3 -->
-        <div class="tool-card" style="text-align: left; padding: clamp(10px, 1.4vh, 14px) clamp(8px, 1vw, 12px);">
+        <div class="tool-card" style="text-align: left; padding: clamp(14px, 2vh, 20px) clamp(12px, 1.4vw, 18px);">
           <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-              <div class="tool-icon" style="margin: 0; font-size: 1.4rem;">🔐</div>
-              <span class="tool-tag tag-green" style="margin: 0;">Emergency Fallback</span>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <div class="tool-icon" style="margin: 0; font-size: 1.8rem;">🔐📄</div>
+              <span class="tool-tag tag-green" style="margin: 0;">ไพ่ตายฉุกเฉิน</span>
             </div>
-            <h3 style="color: var(--green); margin-bottom: 4px; font-size: 0.95rem;">3. เก็บ Recovery Codes</h3>
-            <p style="font-size: 0.74rem; line-height: 1.4; color: #cfd8e6;">
-              <strong style="color: var(--white);">• ความเสี่ยง:</strong> โน้ตบุ๊กพังพร้อมมือถือหาย (Worst-case)<br/>
-              <strong style="color: var(--green);">• วิธีแก้:</strong> จดบันทึก Recovery Codes (8-10 หลัก) ไว้ออฟไลน์<br/>
-              <strong style="color: var(--cyan);">• ผลลัพธ์:</strong> ไพ่ตายใบสุดท้าย กู้บัญชีคืนได้ 100% ไม่ติดล็อกถาวร
+            <h3 style="color: var(--green); margin-bottom: 8px; font-size: 1.12rem;">3. เก็บ Recovery Code ไว้ออฟไลน์</h3>
+            <p style="font-size: 0.84rem; line-height: 1.55; color: #cfd8e6;">
+              <strong style="color: var(--white);">• ความเสี่ยง:</strong> เผื่อวันร้ายๆ โน้ตบุ๊กพังพร้อมกับทำมือถือหาย (กุญแจทุกดอกหายพร้อมกัน)<br/>
+              <strong style="color: var(--green);">• ทางแก้:</strong> จดรหัสกู้คืนฉุกเฉิน (8-10 หลัก) ไว้นอกเครื่อง เป็น <strong>ทางรอดสุดท้าย</strong> กู้บัญชีคืนได้ 100%
             </p>
           </div>
         </div>
       </div>
 
-      <div class="slide-note" style="margin-top: 8px;">
-        <span class="note-title">💡 แก่นแท้ของ Passkey:</span> เราไม่ได้ก๊อปปี้ Private Key จาก TPM แต่เรา <strong>"ขอให้เว็บไซต์เพิ่มกุญแจคนละดอกให้กับบัญชีเรา"</strong> เพื่อไม่ให้เกิด Single Point of Failure!
+      <!-- Clean Highlighted Takeaway -->
+      <div class="quote-box" style="margin-top: 16px; text-align: center; border-color: rgba(0, 212, 255, 0.45); background: rgba(0, 212, 255, 0.08); padding: 12px 18px;">
+        <div class="quote-text" style="font-size: 0.95rem; font-weight: 800; color: #ffffff; line-height: 1.5;">
+          🏠 จำง่ายๆ เหมือนประตูบ้าน: "ประตูบานเดียว แต่ขอให้เว็บทำกุญแจคนละดอก (คอม 1 ดอก, มือถือ 1 ดอก)" — ไม่ใช่เอากุญแจเดิมไปปั๊มซ้ำ!
+        </div>
       </div>
     </div>
   </div>
