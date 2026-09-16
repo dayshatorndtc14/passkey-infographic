@@ -1007,59 +1007,65 @@
     <div class="slide-inner">
       <div class="label">Best Practices &amp; Safety Net</div>
       <h2>3 ข้อควรจำ <span class="cyan">ก่อนเริ่มใช้ Passkey</span></h2>
-      <p class="sub">Passkey ปลอดภัย 100% แต่ต้องรู้วิธีรับมือเมื่อ "คอมพังหรือมือถือหาย"</p>
+      <p class="sub">ถ้าคอมพังทำยังไง? — สรุป 3 กฎเหล็กจำง่ายๆ ในหน้าเดียว</p>
 
       <div class="grid-3" style="margin-top: 16px;">
         <!-- Card 1 -->
-        <div class="tool-card" style="text-align: left; padding: clamp(14px, 2vh, 20px) clamp(12px, 1.4vw, 18px);">
+        <div class="tool-card" style="text-align: left; padding: clamp(16px, 2.2vh, 22px) clamp(14px, 1.6vw, 20px);">
           <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-              <div class="tool-icon" style="margin: 0; font-size: 1.8rem;">💻❌</div>
-              <span class="tool-tag tag-blue" style="margin: 0;">กุญแจดอกที่ 2</span>
+            <div style="font-size: 2.2rem; margin-bottom: 8px;">💻🔑</div>
+            <h3 style="color: var(--cyan); margin-bottom: 6px; font-size: 1.18rem;">1. ทำกุญแจไว้ 2 ดอก</h3>
+            <div style="font-size: 0.95rem; font-weight: 800; color: #ffffff; margin-bottom: 6px;">
+              อย่าเก็บไว้แค่ในคอมเครื่องเดียว
             </div>
-            <h3 style="color: var(--cyan); margin-bottom: 8px; font-size: 1.12rem;">1. กุญแจในคอม "พังแล้วพังเลย"</h3>
-            <p style="font-size: 0.84rem; line-height: 1.55; color: #cfd8e6;">
-              <strong style="color: var(--white);">• ความจริง:</strong> Passkey ใน Windows Hello ฝังติดชิป TPM บนเมนบอร์ด คอมพังคือกุญแจหายถาวร ดึงออกไม่ได้<br/>
-              <strong style="color: var(--cyan);">• ทางแก้:</strong> ให้กดสร้าง Passkey <strong>ดอกที่ 2</strong> เก็บไว้ใน Bitwarden หรือมือถือสำรองไว้เสมอ
+            <p style="font-size: 0.85rem; line-height: 1.5; color: #cfd8e6; margin-bottom: 10px;">
+              กุญแจในคอมฝังในชิป พังแล้วหายถาวร ให้สร้างเพิ่มอีกดอกไว้ในมือถือ หรือ Bitwarden เผื่อไว้เสมอ
             </p>
+            <div style="display: inline-block; background: rgba(255, 71, 87, 0.2); color: #ff6b81; border: 1px solid rgba(255, 71, 87, 0.4); padding: 3px 10px; border-radius: 6px; font-size: 0.72rem; font-weight: 800;">
+              ❌ กุญแจในคอมกู้ไม่ได้
+            </div>
           </div>
         </div>
 
         <!-- Card 2 -->
-        <div class="tool-card highlight" style="text-align: left; padding: clamp(14px, 2vh, 20px) clamp(12px, 1.4vw, 18px);">
+        <div class="tool-card highlight" style="text-align: left; padding: clamp(16px, 2.2vh, 22px) clamp(14px, 1.6vw, 20px);">
           <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-              <div class="tool-icon" style="margin: 0; font-size: 1.8rem;">📱⚡</div>
-              <span class="tool-tag tag-yellow" style="margin: 0;">ไม่ใช่ Backup</span>
+            <div style="font-size: 2.2rem; margin-bottom: 8px;">📲✨</div>
+            <h3 style="color: var(--yellow); margin-bottom: 6px; font-size: 1.18rem;">2. QR Code แค่รีโมต</h3>
+            <div style="font-size: 0.95rem; font-weight: 800; color: #ffffff; margin-bottom: 6px;">
+              ไม่ใช่การดึงกุญแจเก่ากลับมา
             </div>
-            <h3 style="color: var(--yellow); margin-bottom: 8px; font-size: 1.12rem;">2. QR Code "ไม่ใช่ตัวกู้คืน"</h3>
-            <p style="font-size: 0.84rem; line-height: 1.55; color: #cfd8e6;">
-              <strong style="color: var(--white);">• เข้าใจผิด:</strong> คิดว่าเอามือถือสแกน QR คือการดูดกุญแจจากคอมเก่ามาใส่<br/>
-              <strong style="color: var(--yellow);">• ความจริง:</strong> มือถือแค่ทำหน้าที่เป็น <strong>"รีโมตกดเปิดประตู"</strong> ให้คอมใหม่ชั่วคราว ไม่ได้กู้ไฟล์เดิมกลับมา
+            <p style="font-size: 0.85rem; line-height: 1.5; color: #cfd8e6; margin-bottom: 10px;">
+              สแกน QR คือยืมมือถือช่วยกดเปิดประตูให้คอมใหม่ชั่วคราว ไม่ใช่การกู้กุญแจเดิมที่พังไปแล้ว
             </p>
+            <div style="display: inline-block; background: rgba(234, 179, 8, 0.2); color: var(--yellow); border: 1px solid rgba(234, 179, 8, 0.4); padding: 3px 10px; border-radius: 6px; font-size: 0.72rem; font-weight: 800;">
+              ⚠️ มือถือแค่ช่วยเปิดประตู
+            </div>
           </div>
         </div>
 
         <!-- Card 3 -->
-        <div class="tool-card" style="text-align: left; padding: clamp(14px, 2vh, 20px) clamp(12px, 1.4vw, 18px);">
+        <div class="tool-card" style="text-align: left; padding: clamp(16px, 2.2vh, 22px) clamp(14px, 1.6vw, 20px);">
           <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-              <div class="tool-icon" style="margin: 0; font-size: 1.8rem;">🔐📄</div>
-              <span class="tool-tag tag-green" style="margin: 0;">ไพ่ตายฉุกเฉิน</span>
+            <div style="font-size: 2.2rem; margin-bottom: 8px;">📝🔐</div>
+            <h3 style="color: var(--green); margin-bottom: 6px; font-size: 1.18rem;">3. จดรหัสฉุกเฉินไว้</h3>
+            <div style="font-size: 0.95rem; font-weight: 800; color: #ffffff; margin-bottom: 6px;">
+              ไพ่ตายกู้บัญชีได้ 100%
             </div>
-            <h3 style="color: var(--green); margin-bottom: 8px; font-size: 1.12rem;">3. เก็บ Recovery Code ไว้ออฟไลน์</h3>
-            <p style="font-size: 0.84rem; line-height: 1.55; color: #cfd8e6;">
-              <strong style="color: var(--white);">• ความเสี่ยง:</strong> เผื่อวันร้ายๆ โน้ตบุ๊กพังพร้อมกับทำมือถือหาย (กุญแจทุกดอกหายพร้อมกัน)<br/>
-              <strong style="color: var(--green);">• ทางแก้:</strong> จดรหัสกู้คืนฉุกเฉิน (8-10 หลัก) ไว้นอกเครื่อง เป็น <strong>ทางรอดสุดท้าย</strong> กู้บัญชีคืนได้ 100%
+            <p style="font-size: 0.85rem; line-height: 1.5; color: #cfd8e6; margin-bottom: 10px;">
+              จด Recovery Code ใส่กระดาษไว้นอกเครื่อง เผื่อวันร้ายๆ คอมพังพร้อมกับทำมือถือหาย
             </p>
+            <div style="display: inline-block; background: rgba(0, 255, 136, 0.2); color: var(--green); border: 1px solid rgba(0, 255, 136, 0.4); padding: 3px 10px; border-radius: 6px; font-size: 0.72rem; font-weight: 800;">
+              ✅ ทางรอดสุดท้ายเมื่อทุกอย่างพัง
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Clean Highlighted Takeaway -->
-      <div class="quote-box" style="margin-top: 16px; text-align: center; border-color: rgba(0, 212, 255, 0.45); background: rgba(0, 212, 255, 0.08); padding: 12px 18px;">
-        <div class="quote-text" style="font-size: 0.95rem; font-weight: 800; color: #ffffff; line-height: 1.5;">
-          🏠 จำง่ายๆ เหมือนประตูบ้าน: "ประตูบานเดียว แต่ขอให้เว็บทำกุญแจคนละดอก (คอม 1 ดอก, มือถือ 1 ดอก)" — ไม่ใช่เอากุญแจเดิมไปปั๊มซ้ำ!
+      <div class="quote-box" style="margin-top: 18px; text-align: center; border-color: rgba(0, 212, 255, 0.45); background: rgba(0, 212, 255, 0.08); padding: 12px 18px;">
+        <div class="quote-text" style="font-size: 0.98rem; font-weight: 800; color: #ffffff; line-height: 1.5;">
+          🏠 จำง่ายๆ เหมือนประตูบ้าน: "ประตูบานเดิม แค่ทำกุญแจแจกไว้หลายที่ — ไม่ใช่เอากุญแจเดิมไปก๊อปปี้!"
         </div>
       </div>
     </div>
